@@ -1,0 +1,9 @@
+/*CSS style for main.jsp*/
+
+
+.table tr td:lastchild {
+	valign="middle";
+}
+
+
+

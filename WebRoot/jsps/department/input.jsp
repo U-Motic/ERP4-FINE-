@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <link href="../../css/index.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tagStyles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <%-- Here starts the javascript call function --%>
@@ -18,22 +19,22 @@
 			<form action="list.jsp" method="post">
   			<div style="border:1px solid #cecece;">
 				<table width="100%"  border="0" cellpadding="0" cellspacing="0">
-				  <tr bgcolor="#FFFFFF">
+				  <tr class="tr">
 				    <td>&nbsp;</td>
 				  </tr>
 				</table>
 				<table width="100%"  border="0" cellpadding="0" cellspacing="0">
-				    <tr  bgcolor="#FFFFFF">
-				      <td width="18%" height="30" align="center">部门名称</td>
+				    <tr  class="trF">
+				      <td class="td18">部门名称</td>
 				      <td width="32%">
 				      	<input type="text" size="25"/>
 				      </td>
-				      <td width="18%" align="center">电话</td>
+				      <td class="td2no30">电话</td>
 				      <td width="32%">
 				      	<input type="text" size="25"/>
 				      </td>
 				    </tr>
-				    <tr  bgcolor="#FFFFFF">
+				    <tr  class="trF">
 				      <td colspan="4">&nbsp;</td>
 				    </tr>
 				</table>
