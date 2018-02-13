@@ -9,6 +9,11 @@ import java.text.DecimalFormat;
  *
  */
 public class FormatUtil {
+	/**
+	 * this method returns the date to string
+	 * @param time
+	 * @return
+	 */
 	public static String formatDate(Long time){
 		String toReturn;
 		if(time == null) {
@@ -21,6 +26,12 @@ public class FormatUtil {
 		toReturn = parsedDate.toString();}
 		return toReturn;
 	}
+	
+	/**
+	 * this method returns the format time
+	 * @param time
+	 * @return
+	 */
 	public static String formatTime(Long time){
 		String toReturn;
 		if(time == null) {
@@ -33,6 +44,12 @@ public class FormatUtil {
 		  toReturn = parsedDate.toString();}
 		return toReturn;
 	}
+	
+	/**
+	 * this method returns the format date time
+	 * @param time
+	 * @return
+	 */
 	public static String formatDateTime(Long time){
 		String toReturn;
 		if(time == null) {
@@ -46,6 +63,12 @@ public class FormatUtil {
 	return toReturn;
 	}
 	//å°†ä¸€ä¸ªå°�æ•°æ˜¾ç¤ºä¸¤ä½�å°�æ•°
+	
+	/**
+	 * the method returns the formatmoney
+	 * @param money
+	 * @return
+	 */
 	public static String formatMoney(Double money){
 		DecimalFormat df = new DecimalFormat("#0.00");
 	    return df.format(money);

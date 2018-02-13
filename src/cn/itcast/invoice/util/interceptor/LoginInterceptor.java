@@ -10,6 +10,10 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
  *
  */
 public class LoginInterceptor extends AbstractInterceptor {
+	
+	/**
+	 * this method returns the invocation string
+	 */
 	public String intercept(ActionInvocation invocation) throws Exception {
 		String toReturn;
 
