@@ -27,120 +27,156 @@ public class StoreEbo implements StoreEbi{
 	private OrderDetailDao orderDetailDao;
 	private StoreOperDao storeOperDao;
 	
+	/**
+	 * this method is use to set the Store oper Dao
+	 * @param storeOperDao
+	 */
 	public void setStoreOperDao(StoreOperDao storeOperDao) {
 		this.storeOperDao = storeOperDao;
 	}
 
+	/**
+	 * this method is used to set the order detail dao
+	 * @param orderDetailDao
+	 */
 	public void setOrderDetailDao(OrderDetailDao orderDetailDao) {
 		this.orderDetailDao = orderDetailDao;
 	}
 
+	/**
+	 * this method is used to set the store detail dao
+	 * @param storeDetailDao
+	 */
 	public void setStoreDetailDao(StoreDetailDao storeDetailDao) {
 		this.storeDetailDao = storeDetailDao;
 	}
 
+	/**
+	 * this method is used to set the store do
+	 * @param storeDao
+	 */
 	public void setStoreDao(StoreDao storeDao) {
 		this.storeDao = storeDao;
 	}
-
+	
+	/**
+	 * this method is used to save the storeModel
+	 */
 	public void save(StoreModel sm) {
 		storeDao.save(sm);
 	}
 
+	/**
+	 * this method is used to delete the storeModel
+	 */
 	public void delete(StoreModel sm) {
 		storeDao.delete(sm);
 	}
 
+	/**
+	 * this method is used to updatee the storeModel
+	 */
 	public void update(StoreModel sm) {
 		storeDao.update(sm);
 	}
 
+	/**
+	 * this method is used to get the uuid
+	 */
 	public StoreModel get(Serializable uuid) {
 		return storeDao.get(uuid);
 	}
 
+	/**
+	 * this method is used to get all the store model
+	 */
 	public List<StoreModel> getAll() {
 		return storeDao.getAll();
 	}
 
+	/**
+	 * this method is used to get all the store model
+	 */
 	public List<StoreModel> getAll(BaseQueryModel qm, Integer pageNum,Integer pageCount) {
 		return storeDao.getAll(qm,pageNum,pageCount);
 	}
 
+	/**
+	 * this method is used to get the count
+	 */
 	public Integer getCount(BaseQueryModel qm) {
 		return storeDao.getCount(qm);
 	}
 
+	/**
+	 * this method is used to get the in goods
+	 */
 	public OrderDetailModel inGoods(Long odmUuid ,Long goodsUuid, Long storeUuid, Integer num,EmpModel login) {
 		GoodsModel gm = new GoodsModel();
-		gm.setUuid(goodsUuid);
+		gm.setSegreto(goodsUuid);
 		StoreModel sm = new StoreModel();
-		sm.setUuid(storeUuid);
+		sm.setSegreto(storeUuid);
 		
 		
-		//å…¥åº“ç©¶ç«Ÿè¦�å�šä»€ä¹ˆï¼Ÿ
-		//1.åŽŸå§‹è®¢å�•æ˜Žç»†ä¸­çš„å·²å…¥åº“æ•°é‡�æ›´æ–°
-		//update è®¢å�•æ˜Žç»†  
-		//å¿«ç…§æ›´æ–°
+		//Ã¥â€¦Â¥Ã¥Âºâ€œÃ§Â©Â¶Ã§Â«Å¸Ã¨Â¦ï¿½Ã¥ï¿½Å¡Ã¤Â»â‚¬Ã¤Â¹Ë†Ã¯Â¼Å¸
+		//1.Ã¥Å½Å¸Ã¥Â§â€¹Ã¨Â®Â¢Ã¥ï¿½â€¢Ã¦ËœÅ½Ã§Â»â€ Ã¤Â¸Â­Ã§Å¡â€žÃ¥Â·Â²Ã¥â€¦Â¥Ã¥Âºâ€œÃ¦â€¢Â°Ã©â€¡ï¿½Ã¦â€ºÂ´Ã¦â€“Â°
+		//update Ã¨Â®Â¢Ã¥ï¿½â€¢Ã¦ËœÅ½Ã§Â»â€   
+		//Ã¥Â¿Â«Ã§â€¦Â§Ã¦â€ºÂ´Ã¦â€“Â°
 		OrderDetailModel odm = orderDetailDao.get(odmUuid);
 		
-		//æ ¡éªŒ
-		if(odm.getSurplus() < num){
-			throw new AppException("aa");
-		}
 		
 		
 		odm.setSurplus(odm.getSurplus()-num);
 		
-		//2.è®°å½•å…¥åº“çš„è®°å½•
+		//2.Ã¨Â®Â°Ã¥Â½â€¢Ã¥â€¦Â¥Ã¥Âºâ€œÃ§Å¡â€žÃ¨Â®Â°Ã¥Â½â€¢
 		StoreOperModel som = new StoreOperModel();
-		//å…¥åº“æ“�ä½œæ—¶é—´
+		//Ã¥â€¦Â¥Ã¥Âºâ€œÃ¦â€œï¿½Ã¤Â½Å“Ã¦â€”Â¶Ã©â€”Â´
 		som.setOperTime(System.currentTimeMillis());
-		//æœ¬æ¬¡æ“�ä½œæ•°é‡�
+		//Ã¦Å“Â¬Ã¦Â¬Â¡Ã¦â€œï¿½Ã¤Â½Å“Ã¦â€¢Â°Ã©â€¡ï¿½
 		som.setNum(num);
-		//è®¾ç½®æ“�ä½œç±»åž‹ä¸ºå…¥åº“
+		//Ã¨Â®Â¾Ã§Â½Â®Ã¦â€œï¿½Ã¤Â½Å“Ã§Â±Â»Ã¥Å¾â€¹Ã¤Â¸ÂºÃ¥â€¦Â¥Ã¥Âºâ€œ
 		som.setType(StoreOperModel.STOREOPER_TYPE_OF_IN);
-		//è®¾ç½®æ“�ä½œçš„å•†å“�
+		//Ã¨Â®Â¾Ã§Â½Â®Ã¦â€œï¿½Ã¤Â½Å“Ã§Å¡â€žÃ¥â€¢â€ Ã¥â€œï¿½
 		som.setGm(gm);
-		//è®¾ç½®æ“�ä½œäºº
+		//Ã¨Â®Â¾Ã§Â½Â®Ã¦â€œï¿½Ã¤Â½Å“Ã¤ÂºÂº
 		som.setEm(login);
-		//è®¾ç½®å¯¹åº”çš„ä»“åº“
+		//Ã¨Â®Â¾Ã§Â½Â®Ã¥Â¯Â¹Ã¥Âºâ€�Ã§Å¡â€žÃ¤Â»â€œÃ¥Âºâ€œ
 		som.setSm(sm);
-		//è®¾ç½®æ“�ä½œå¯¹åº”çš„è®¢å�•
+		//Ã¨Â®Â¾Ã§Â½Â®Ã¦â€œï¿½Ã¤Â½Å“Ã¥Â¯Â¹Ã¥Âºâ€�Ã§Å¡â€žÃ¨Â®Â¢Ã¥ï¿½â€¢
 		som.setOm(odm.getOm());
 		storeOperDao.save(som);
 		
-		//3.ä»“åº“ä¸­çš„çŽ°æœ‰å•†å“�æ•°é‡�æ›´æ–°
-		//A Bä¸¤ä¸ªä»“åº“
-		//å…¥Xå•†å“�ï¼ŒAä»“åº“Xå•†å“�100ä¸ªï¼ŒBä»“åº“ä»Žæ²¡æœ‰æ”¾è¿‡Xå•†å“�
-		//Xå•†å“�å…¥B
-		//æ ¹æ�®å•†å“�uuidä¸Žä»“åº“çš„uuidèŽ·å�–å•†å“�åœ¨ä»“åº“ä¸­çš„æ•°æ�®è®°å½•
+		//3.Ã¤Â»â€œÃ¥Âºâ€œÃ¤Â¸Â­Ã§Å¡â€žÃ§Å½Â°Ã¦Å“â€°Ã¥â€¢â€ Ã¥â€œï¿½Ã¦â€¢Â°Ã©â€¡ï¿½Ã¦â€ºÂ´Ã¦â€“Â°
+		//A BÃ¤Â¸Â¤Ã¤Â¸ÂªÃ¤Â»â€œÃ¥Âºâ€œ
+		//Ã¥â€¦Â¥XÃ¥â€¢â€ Ã¥â€œï¿½Ã¯Â¼Å’AÃ¤Â»â€œÃ¥Âºâ€œXÃ¥â€¢â€ Ã¥â€œï¿½100Ã¤Â¸ÂªÃ¯Â¼Å’BÃ¤Â»â€œÃ¥Âºâ€œÃ¤Â»Å½Ã¦Â²Â¡Ã¦Å“â€°Ã¦â€�Â¾Ã¨Â¿â€¡XÃ¥â€¢â€ Ã¥â€œï¿½
+		//XÃ¥â€¢â€ Ã¥â€œï¿½Ã¥â€¦Â¥B
+		//Ã¦Â Â¹Ã¦ï¿½Â®Ã¥â€¢â€ Ã¥â€œï¿½uuidÃ¤Â¸Å½Ã¤Â»â€œÃ¥Âºâ€œÃ§Å¡â€žuuidÃ¨Å½Â·Ã¥ï¿½â€“Ã¥â€¢â€ Ã¥â€œï¿½Ã¥Å“Â¨Ã¤Â»â€œÃ¥Âºâ€œÃ¤Â¸Â­Ã§Å¡â€žÃ¦â€¢Â°Ã¦ï¿½Â®Ã¨Â®Â°Ã¥Â½â€¢
 		StoreDetailModel sdm = storeDetailDao.getBySmAndGm(storeUuid,goodsUuid);
 		if(sdm == null){
-			//è¯¥ä»“åº“ä¸­æ²¡æœ‰å­˜å‚¨è¿‡è¯¥å•†å“�
-			//åˆ�å§‹åŒ–æ•°æ�®ï¼Œsave
+			//Ã¨Â¯Â¥Ã¤Â»â€œÃ¥Âºâ€œÃ¤Â¸Â­Ã¦Â²Â¡Ã¦Å“â€°Ã¥Â­ËœÃ¥â€šÂ¨Ã¨Â¿â€¡Ã¨Â¯Â¥Ã¥â€¢â€ Ã¥â€œï¿½
+			//Ã¥Ë†ï¿½Ã¥Â§â€¹Ã¥Å’â€“Ã¦â€¢Â°Ã¦ï¿½Â®Ã¯Â¼Å’save
 			sdm = new StoreDetailModel();
 			sdm.setNum(num);
 			sdm.setGm(gm);
 			sdm.setSm(sm);
 			storeDetailDao.save(sdm);
 		}else{
-			//è¯¥ä»“åº“ä¸­å­˜å‚¨è¿‡è¯¥å•†å“�
-			//åˆ©ç”¨å¿«ç…§æ›´æ–°æ•°é‡�
+			//Ã¨Â¯Â¥Ã¤Â»â€œÃ¥Âºâ€œÃ¤Â¸Â­Ã¥Â­ËœÃ¥â€šÂ¨Ã¨Â¿â€¡Ã¨Â¯Â¥Ã¥â€¢â€ Ã¥â€œï¿½
+			//Ã¥Ë†Â©Ã§â€�Â¨Ã¥Â¿Â«Ã§â€¦Â§Ã¦â€ºÂ´Ã¦â€“Â°Ã¦â€¢Â°Ã©â€¡ï¿½
 			sdm.setNum(sdm.getNum()+num);
 		}
 		
-		//4.å½“è®¢å�•ä¸­çš„æ‰€æœ‰å•†å“�å…¨éƒ¨å…¥åº“å®Œæ¯•å�Žï¼Œä¿®æ”¹è®¢å�•çš„çŠ¶æ€�ï¼Œå�Œæ—¶ä¿®æ”¹å®Œæˆ�æ—¶é—´
+		//4.Ã¥Â½â€œÃ¨Â®Â¢Ã¥ï¿½â€¢Ã¤Â¸Â­Ã§Å¡â€žÃ¦â€°â‚¬Ã¦Å“â€°Ã¥â€¢â€ Ã¥â€œï¿½Ã¥â€¦Â¨Ã©Æ’Â¨Ã¥â€¦Â¥Ã¥Âºâ€œÃ¥Â®Å’Ã¦Â¯â€¢Ã¥ï¿½Å½Ã¯Â¼Å’Ã¤Â¿Â®Ã¦â€�Â¹Ã¨Â®Â¢Ã¥ï¿½â€¢Ã§Å¡â€žÃ§Å Â¶Ã¦â‚¬ï¿½Ã¯Â¼Å’Ã¥ï¿½Å’Ã¦â€”Â¶Ã¤Â¿Â®Ã¦â€�Â¹Ã¥Â®Å’Ã¦Ë†ï¿½Ã¦â€”Â¶Ã©â€”Â´
 		OrderModel om = odm.getOm();
 		int sum = 0;
 		for(OrderDetailModel temp:om.getOdms()){
 			sum += temp.getSurplus();
 		}
 		if(sum == 0){
-			//å¿«ç…§æ›´æ–°
-			//ä¿®æ”¹è®¢å�•çŠ¶æ€�
+			//Ã¥Â¿Â«Ã§â€¦Â§Ã¦â€ºÂ´Ã¦â€“Â°
+			//Ã¤Â¿Â®Ã¦â€�Â¹Ã¨Â®Â¢Ã¥ï¿½â€¢Ã§Å Â¶Ã¦â‚¬ï¿½
 			om.setType(OrderModel.ORDER_TYPE_OF_BUY_END);
-			//ä¿®æ”¹ç»“å�•æ—¶é—´
+			//Ã¤Â¿Â®Ã¦â€�Â¹Ã§Â»â€œÃ¥ï¿½â€¢Ã¦â€”Â¶Ã©â€”Â´
 			om.setCompleteTime(System.currentTimeMillis());
 		}
 		return odm;

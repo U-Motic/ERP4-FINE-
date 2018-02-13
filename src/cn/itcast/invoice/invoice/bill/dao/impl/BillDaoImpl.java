@@ -19,6 +19,9 @@ public class BillDaoImpl extends HibernateDaoSupport implements BillDao{
 
 	private static List<Object[]> billByGoods;
 
+	/**
+	 * this method is used to get the bill by goods
+	 */
 	public List<Object[]> getBillByGoods(BillQueryModel bqm) {
 		/*
 		select 
@@ -51,6 +54,11 @@ public class BillDaoImpl extends HibernateDaoSupport implements BillDao{
 		return this.getHibernateTemplate().findByCriteria(dc);
 	}
 	
+	/**
+	 * this method is used to get the doQbc
+	 * @param dc
+	 * @param bqm
+	 */
 	private void doQbc(DetachedCriteria dc,BillQueryModel bqm){
 		dc.createAlias("om", "o");
 		if(bqm.getType()!=null && bqm.getType()!=-1){
@@ -71,6 +79,9 @@ public class BillDaoImpl extends HibernateDaoSupport implements BillDao{
 			dc.add(Restrictions.eq("g.uuid", bqm.getGoodsUuid()));
 		}
 	}
+	/**
+	 * this method is used to get the bill by detail by goods
+	 */
 	public List<OrderDetailModel> getBillDetailByGoods(BillQueryModel bqm) {
 		DetachedCriteria dc = DetachedCriteria.forClass(OrderDetailModel.class);
 		//è®¾ç½®æŸ¥è¯¢çš„æ�¡ä»¶

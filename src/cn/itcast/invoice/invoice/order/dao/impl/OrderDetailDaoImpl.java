@@ -12,6 +12,9 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  *
  */
 public class OrderDetailDaoImpl extends BaseDaoImpl<OrderDetailModel> implements OrderDetailDao{
+	/**
+	 * this method is used to do the qbc
+	 */
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){
 		OrderDetailQueryModel oqm = (OrderDetailQueryModel) qm;
 		//TODO 添加自定义查询规则

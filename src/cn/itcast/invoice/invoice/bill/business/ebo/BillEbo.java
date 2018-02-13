@@ -54,18 +54,31 @@ public class BillEbo implements BillEbi{
 		ChartFactory.setChartTheme(theme);
 	}
 	private BillDao billDao;
+	/**
+	 * this method set the billdao
+	 * @param billDao
+	 */
 	public void setBillDao(BillDao billDao) {
 		this.billDao = billDao;
 	}
 
+	/**
+	 * this method is used to get the bill by goods
+	 */
 	public List<Object[]> getBillByGoods(BillQueryModel bqm) {
 		return billDao.getBillByGoods(bqm);
 	}
 
+	/**
+	 * this method is used to ghe the bill detail by goods
+	 */
 	public List<OrderDetailModel> getBillDetailByGoods(BillQueryModel bqm) {
 		return billDao.getBillDetailByGoods(bqm);
 	}
 
+	/**
+	 * this method is used to get the bill for pie
+	 */
 	public void getBillForPie(OutputStream os, List<Object[]> billList) {
 		//ÃƒÂ¥Ã‚Â°Ã¢â‚¬Â ÃƒÂ©Ã‚Â¥Ã‚Â¼ÃƒÂ¥Ã¢â‚¬ÂºÃ‚Â¾ÃƒÂ¥Ã¢â‚¬Â Ã¢â‚¬Â¦ÃƒÂ¥Ã‚Â®Ã‚Â¹ÃƒÂ¨Ã‚Â½Ã‚Â¬ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â¥osÃƒÂ¥Ã‚Â¯Ã‚Â¹ÃƒÂ¨Ã‚Â±Ã‚Â¡
 		//ÃƒÂ¥Ã¢â‚¬Â¡Ã¢â‚¬Â ÃƒÂ¥Ã‚Â¤Ã¢â‚¬Â¡ÃƒÂ¦Ã¢â‚¬Â¢Ã‚Â°ÃƒÂ¦Ã¯Â¿Â½Ã‚Â®
@@ -89,6 +102,9 @@ public class BillEbo implements BillEbi{
 		}
 	}
 
+	/**
+	 * this method is used to get the excel bill
+	 */
 	public InputStream getExcelBill(List<Object[]> billList) throws Exception{
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		//ÃƒÂ¥Ã¢â‚¬Â Ã¢â€žÂ¢ExcelÃƒÂ¦Ã¢â‚¬â€œÃ¢â‚¬Â¡ÃƒÂ¤Ã‚Â»Ã‚Â¶

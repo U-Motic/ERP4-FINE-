@@ -17,38 +17,62 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  */
 public class RoleEbo implements RoleEbi{
 	private RoleDao roleDao;
+	/**
+	 * this method is used to set the roledao
+	 * @param roleDao
+	 */
 	public void setRoleDao(RoleDao roleDao) {
 		this.roleDao = roleDao;
 	}
-
+	/**
+	 * this method is used to save the roleModel
+	 */
 	public void save(RoleModel rm) {
 		roleDao.save(rm);
 	}
-
+	/**
+	 * this method is used to delete the roleModel
+	 */
 	public void delete(RoleModel rm) {
 		roleDao.delete(rm);
 	}
-
+	/**
+	 * this method is used to update the roleModel
+	 */
 	public void update(RoleModel rm) {
 		roleDao.update(rm);
 	}
-
+	/**
+	 * this method is used to get the uuid
+	 */
 	public RoleModel get(Serializable uuid) {
 		return roleDao.get(uuid);
 	}
 
+	/**
+	 * this method is used to get all the rolemodel
+	 */
 	public List<RoleModel> getAll() {
 		return roleDao.getAll();
 	}
 
+	/**
+	 * this method is used to get all the rolemodel
+	 */
 	public List<RoleModel> getAll(BaseQueryModel qm, Integer pageNum,Integer pageCount) {
 		return roleDao.getAll(qm,pageNum,pageCount);
 	}
 
+	/**
+	 * this method is used to get the count
+	 */
 	public Integer getCount(BaseQueryModel qm) {
 		return roleDao.getCount(qm);
 	}
 
+	/**
+	 * this method is used to save the roleModel
+	 */
 	public void save(RoleModel rm, Long[] resUuids, Long[] menuUuids) {
 		//å°†å¯¹åº”çš„èµ„æº�å€¼è½¬æ�¢ä¸ºé›†å�ˆï¼Œè®¾ç½®åˆ°è§’è‰²å¯¹è±¡ä¸­
 		//æ•°ç»„è½¬é›†å�ˆ
@@ -73,6 +97,9 @@ public class RoleEbo implements RoleEbi{
 		roleDao.save(rm);
 	}
 
+	/**
+	 * this method is used to update the roleModel
+	 */
 	public void update(RoleModel rm, Long[] resUuids, Long[] menuUuids) {
 		//å°†å¯¹åº”çš„èµ„æº�å€¼è½¬æ�¢ä¸ºé›†å�ˆï¼Œè®¾ç½®åˆ°è§’è‰²å¯¹è±¡ä¸­
 		//æ•°ç»„è½¬é›†å�ˆ

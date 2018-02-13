@@ -14,11 +14,16 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  *
  */
 public class ResDaoImpl extends BaseDaoImpl<ResModel> implements ResDao{
+	/**
+	 * this method is used to do the qbc
+	 */
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){
 		ResQueryModel rqm = (ResQueryModel) qm;
 		//TODO Ã¦Â·Â»Ã¥Å Â Ã¨â€¡ÂªÃ¥Â®Å¡Ã¤Â¹â€°Ã¦Å¸Â¥Ã¨Â¯Â¢Ã¨Â§â€žÃ¥Ë†â„¢
 	}
-
+/**
+ * this method is used to get all the res by empUudi
+ */
 	public List<String> getAllResByEmp(Long empUuid) {
 		//from tbl_res where .....
 		//from ResModel
@@ -33,7 +38,9 @@ public class ResDaoImpl extends BaseDaoImpl<ResModel> implements ResDao{
 		String hql = " select distinct res.url from ResModel res join res.roles role join role.emps em where em.uuid = ?";
 		return this.getHibernateTemplate().find(hql,empUuid);
 	}
-	
+	/**
+	 * this method is used to get the urls
+	 */
 	public List<String> getUrls() {
 		String hql = "select url from ResModel";
 		return this.getHibernateTemplate().find(hql);

@@ -110,7 +110,9 @@ public class GoodsDaoImpl extends BaseDaoImpl<GoodsModel> implements GoodsDao{
 	}
 
 	
-	
+	/**
+	 * this method is used to do the qbc
+	 */
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){
 		GoodsQueryModel gqm = (GoodsQueryModel) qm;
 		
@@ -124,17 +126,25 @@ public class GoodsDaoImpl extends BaseDaoImpl<GoodsModel> implements GoodsDao{
 		addUnit(gqm, dc);
 		
 	}
-
+/**
+ * this method is used to get all the goods model by uuid
+ */
 	public List<GoodsModel> getAllByGtmUuid(Long gtmUuid) {
 		String hql = "from GoodsModel where gtm.uuid = ?";
 		return this.getHibernateTemplate().find(hql,gtmUuid);		
 	}
 
+	/**
+	 * this method is used to update the use num
+	 */
 	public void updateUseNum() {
 		String hql = "update GoodsModel g set g.useNum = ( select count(odm.gm.uuid) from OrderDetailModel odm where odm.gm.uuid = g.uuid )";
 		this.getHibernateTemplate().bulkUpdate(hql);
 	}
 
+	/**
+	 * this method is used to get the store warn info
+	 */
 	public List<Object[]> getStoreWarnInfo() {
 		
 		

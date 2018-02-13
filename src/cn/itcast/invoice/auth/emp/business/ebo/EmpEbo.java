@@ -23,15 +23,26 @@ public class EmpEbo implements EmpEbi{
 	private static int two = 2, three = 3;
 	private EmpDao empDao;
 	private ResDao resDao;
-	
+	/**
+	 * this method to sed the resdao
+	 * @param resDao
+	 */
 	public void setResDao(ResDao resDao) {
 		this.resDao = resDao;
 	}
 
+	/**
+	 * this method to sed the empdao
+	 * @param resDao
+	 */
 	public void setEmpDao(EmpDao empDao) {
 		this.empDao = empDao;
 	}
 
+	/**
+	 * this method to save the empmodel
+	 * @param resDao
+	 */
 	public void save(EmpModel em) {
 		//Ã¤Â¸ÂºÃ¦Å¸ï¿½Ã¤Âºâ€ºÃ¦â€¢Â°Ã¦ï¿½Â®Ã¨Â¿â€ºÃ¨Â¡Å’Ã¥Ë†ï¿½Ã¥Â§â€¹Ã¥Å’â€“
 		em.setPwd(MD5Utils.sha256(em.getPwd()));
@@ -41,11 +52,18 @@ public class EmpEbo implements EmpEbi{
 		em.setLoginTimes(0);
 		empDao.save(em);
 	}
-
+	/**
+	 * this method to delete the empmodel
+	 * @param resDao
+	 */
 	public void delete(EmpModel em) {
 		empDao.delete(em);
 	}
 
+	/**
+	 * this method to update the empmodel
+	 * @param resDao
+	 */
 	public void update(EmpModel em) {
 		//Ã§Â¼ÂºÃ¥Â°â€˜Ã¤Â¸â‚¬Ã¤Âºâ€ºÃ¦â€¢Â°Ã¦ï¿½Â®Ã¯Â¼Å’Ã¨Â¿â„¢Ã¤Âºâ€ºÃ¦â€¢Â°Ã¦ï¿½Â®Ã¤Â¸ï¿½Ã¨Æ’Â½Ã¤Â»Å½Ã©Â¡ÂµÃ©ï¿½Â¢Ã¦â€�Â¶Ã©â€ºâ€ 
 		//Ã¥Â¿Â«Ã§â€¦Â§Ã¦â€ºÂ´Ã¦â€“Â°
@@ -63,22 +81,39 @@ public class EmpEbo implements EmpEbi{
 		
 	}
 
+	/**
+	 * this method to get the uuid
+	 * @param resDao
+	 */
 	public EmpModel get(Serializable uuid) {
 		return empDao.get(uuid);
 	}
 
+	/**
+	 * this method to get all the list of empmodel
+	 * 
+	 */
 	public List<EmpModel> getAll() {
 		return empDao.getAll();
 	}
 
+	/**
+	 * this method to get all the list
+	 * 
+	 */
 	public List<EmpModel> getAll(BaseQueryModel qm, Integer pageNum,Integer pageCount) {
 		return empDao.getAll(qm,pageNum,pageCount);
 	}
 
+	/**
+	 * this method is used to get the count of the query model
+	 */
 	public Integer getCount(BaseQueryModel qm) {
 		return empDao.getCount(qm);
 	}
-
+/**
+ * this method is used to login
+ */
 	public EmpModel login(String userName, String pwd ,String lastLoginIp) {
 		//Ã¥Â¯Â¹Ã¥Â¯â€ Ã§Â ï¿½Ã¨Â¿â€ºÃ¨Â¡Å’md5Ã¥Å Â Ã¥Â¯â€ 
 		pwd = MD5Utils.sha256(pwd);
@@ -104,12 +139,19 @@ public class EmpEbo implements EmpEbi{
 		return loginEm;
 	}
 
+	/**
+	 * this method is used to change the password
+	 */
 	public boolean changePwd(String userName, String oldPwd, String newPwd) {
 		oldPwd = MD5Utils.sha256(oldPwd);
 		newPwd = MD5Utils.sha256(newPwd);
 		return empDao.updatePwdByUserNameAndPwd(userName,oldPwd,newPwd);
 	}
 
+	/**
+	 * this method to save the empmodel
+	 * @param resDao
+	 */
 	public void save(EmpModel em, Long[] roleUuids) {
 		//Ã¤Â¸ÂºÃ¦Å¸ï¿½Ã¤Âºâ€ºÃ¦â€¢Â°Ã¦ï¿½Â®Ã¨Â¿â€ºÃ¨Â¡Å’Ã¥Ë†ï¿½Ã¥Â§â€¹Ã¥Å’â€“
 		em.setPwd(MD5Utils.sha256(em.getPwd()));
@@ -130,6 +172,10 @@ public class EmpEbo implements EmpEbi{
 		empDao.save(em);
 	}
 
+	/**
+	 * this method to update the empmodel
+	 * @param resDao
+	 */
 	public void update(EmpModel em, Long[] roleUuids) {
 		//Ã§Â¼ÂºÃ¥Â°â€˜Ã¤Â¸â‚¬Ã¤Âºâ€ºÃ¦â€¢Â°Ã¦ï¿½Â®Ã¯Â¼Å’Ã¨Â¿â„¢Ã¤Âºâ€ºÃ¦â€¢Â°Ã¦ï¿½Â®Ã¤Â¸ï¿½Ã¨Æ’Â½Ã¤Â»Å½Ã©Â¡ÂµÃ©ï¿½Â¢Ã¦â€�Â¶Ã©â€ºâ€ 
 		//Ã¥Â¿Â«Ã§â€¦Â§Ã¦â€ºÂ´Ã¦â€“Â°
@@ -152,6 +198,10 @@ public class EmpEbo implements EmpEbi{
 		temp.setRoles(roles);
 	}
 
+	/**
+	 * this method to get all by dep uuid
+	 * @param resDao
+	 */
 	public List<EmpModel> getAllByDep(Long depUuid) {
 		return empDao.getAllByDepUuid(depUuid);
 	}

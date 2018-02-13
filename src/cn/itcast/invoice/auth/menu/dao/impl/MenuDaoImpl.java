@@ -16,6 +16,9 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  */
 public class MenuDaoImpl extends BaseDaoImpl<MenuModel> implements MenuDao{
 	private static long oneL = 1L;
+	/**
+	 * this method is used to do a qcb
+	 */
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){
 		MenuQueryModel mqm = (MenuQueryModel) qm;
 		//Ã¦Â­Â¤Ã¥Â¤â€žÃ¨Â¿â€¡Ã¦Â»Â¤Ã¦Å½â€°Ã§Â³Â»Ã§Â»Å¸Ã¨ï¿½Å“Ã¥ï¿½â€¢
@@ -31,23 +34,33 @@ public class MenuDaoImpl extends BaseDaoImpl<MenuModel> implements MenuDao{
 		
 	}
 	//Ã¥Â¾â€¦Ã¥Â®Å¡
+	/**
+	 * this method is used to get uuud and puuid
+	 */
 	public List<MenuModel> getByUuidAndPuuidIsOne() {
 		String hql = "from MenuModel where uuid = ? or parent.uuid = ?";
 		//TODO Ã¦Â­Â¤Ã¥Â¤â€žÃ¤Â½Â¿Ã§â€�Â¨Ã§Å¡â€žÃ¦ËœÂ¯Ã¥â€ºÂºÃ¥Â®Å¡Ã¥â‚¬Â¼Ã¯Â¼Ë†Ã¥Å¸ÂºÃ¤ÂºÅ½Ã©Å“â‚¬Ã¦Â±â€šÃ¥â€ Â³Ã¥Â®Å¡Ã§Å¡â€žÃ¯Â¼â€°
 		return this.getHibernateTemplate().find(hql,oneL,oneL);
 	}
 
+	/**
+	 * this method is used to get puuid 
+	 */
 	public List<MenuModel> getByPuuidIsOne() {
 		String hql = "from MenuModel where parent.uuid = ?";
 		//TODO Ã¦Â­Â¤Ã¥Â¤â€žÃ¤Â½Â¿Ã§â€�Â¨Ã§Å¡â€žÃ¦ËœÂ¯Ã¥â€ºÂºÃ¥Â®Å¡Ã¥â‚¬Â¼Ã¯Â¼Ë†Ã¥Å¸ÂºÃ¤ÂºÅ½Ã©Å“â‚¬Ã¦Â±â€šÃ¥â€ Â³Ã¥Â®Å¡Ã§Å¡â€žÃ¯Â¼â€°
 		return this.getHibernateTemplate().find(hql,oneL);
 	}
-	
+	/**
+	 * this method is used to get puuid 
+	 */
 	public List<MenuModel> getByPuuid(Long puuid) {
 		String hql = "from MenuModel where parent.uuid = ?";
 		return this.getHibernateTemplate().find(hql,puuid);
 	}
-	
+	/**
+	 * this method is used to get parent by emppuuid 
+	 */
 	public List<MenuModel> getParentByEmpUuid(Long empUuid) {
 		//Ã¦ï¿½Â¡Ã¤Â»Â¶Ã¦ËœÂ¯Ã¤ÂºÂºÃ§Å¡â€žuuid
 		//Ã¦Å¸Â¥Ã¨Â¯Â¢Ã§Å¡â€žÃ¦ËœÂ¯Ã¨ï¿½Å“Ã¥ï¿½â€¢
@@ -58,6 +71,9 @@ public class MenuDaoImpl extends BaseDaoImpl<MenuModel> implements MenuDao{
 		return getMenusByPuuidAndEmp(oneL,empUuid);
 	}
 
+	/**
+	 * this method is used to get puuid and emp
+	 */
 	public List<MenuModel> getMenusByPuuidAndEmp(Long puuid, Long empUuid) {
 		//Ã§Ë†Â¶uuidÃ¦Å’â€¡Ã¥Â®Å¡Ã¯Â¼Å’Ã©Å“â‚¬Ã¨Â¦ï¿½Ã¤Â½Â¿Ã§â€�Â¨Ã§â€�Â¨Ã¦Ë†Â·Ã¨Â¿â€¡Ã¦Â»Â¤Ã¤Â¸â‚¬Ã¤Â¸â€¹
 		//from MenuModel mm join mm.roles rm join rm.emps em where em.uuid = ? 

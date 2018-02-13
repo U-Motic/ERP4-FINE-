@@ -12,6 +12,9 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  *
  */
 public class RoleDaoImpl extends BaseDaoImpl<RoleModel> implements RoleDao{
+	/**
+	 * this method is used to do the the qbc
+	 */
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){
 		RoleQueryModel rqm = (RoleQueryModel) qm;
 		//TODO 添加自定义查询规则
