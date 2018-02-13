@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <link href="../../css/index.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tagStyles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="../../js/Calendar.js"></script>
 <%-- Here starts the javascript call function --%>
@@ -17,52 +18,52 @@
 		<div class="square-order">
 			<form action="list.jsp" method="post"> 
   			<div style="border:1px solid #cecece;">
-				<table width="100%"  border="0" cellpadding="0" cellspacing="0">
-				  <tr bgcolor="#FFFFFF">
+				<table class="table100">
+				  <tr class="trF">
 				    <td>&nbsp;</td>
 				  </tr>
 				</table>
-				<table width="100%"  border="0" cellpadding="0" cellspacing="0">
-				    <tr  bgcolor="#FFFFFF">
-				      <td width="18%" height="30" align="center">用&nbsp;户&nbsp;名</td>
+				<table class="table100">
+				    <tr class="trF">
+				      <td class="td18">用&nbsp;户&nbsp;名</td>
 				      <td width="32%">
 				      	<input type="text" size="25"/>
 				      </td>
-				      <td width="18%"align="center">真实姓名</td>
+				      <td class="td2no30">真实姓名</td>
 				      <td width="32%">
 				      	<input type="text" size="25"/>
 					  </td>
 				    </tr>
-				    <tr bgcolor="#FFFFFF">
+				    <tr class="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
-				    <tr  bgcolor="#FFFFFF">
-				      <td align="center">密&nbsp;&nbsp;&nbsp;&nbsp;码</td>
+				    <tr class="trF">
+				      <td class="tdalign">密&nbsp;&nbsp;&nbsp;&nbsp;码</td>
 				      <td>
 				      	<input type="text" size="25"/>
 				      </td>
-				      <td  align="center">确认密码</td>
+				      <td class="tdalign">确认密码</td>
 				      <td >
 				      	<input type="text" size="25"/>
 				      </td>
 				    </tr>
-				     <tr bgcolor="#FFFFFF">
+				     <tr class="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
-				    <tr  bgcolor="#FFFFFF">
-				      <td height="30" align="center">电子邮箱</td>
+				    <tr class="trF">
+				      <td class="tdnowidth">电子邮箱</td>
 				      <td>
 				      	<input type="text" size="25"/>
-				      <td align="center">电话号码</td>
+				      <td class="tdalign">电话号码</td>
 				      <td>
 				      	<input type="text" size="25"/>
 					  </td>
 				     </tr>
-				      <tr bgcolor="#FFFFFF">
+				      <tr class="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
-				    <tr  bgcolor="#FFFFFF">
-				      <td height="30" align="center">性&nbsp;&nbsp;&nbsp;&nbsp;别</td>
+				    <tr class="trF">
+				      <td class="tdnowidth">性&nbsp;&nbsp;&nbsp;&nbsp;别</td>
 				      <td>
 			
 							
@@ -75,20 +76,20 @@
 								value="0"
 							 />
 					  </td>
-				      <td align="center">地&nbsp;&nbsp;&nbsp;&nbsp;址</td>
+				      <td class="tdalign">地&nbsp;&nbsp;&nbsp;&nbsp;址</td>
 				      <td>
 				      	<input type="text" size="25"/>
 					  </td>
 				    </tr>
-				     <tr bgcolor="#FFFFFF">
+				     <tr class="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
-				    <tr  bgcolor="#FFFFFF">
-				      <td height="30" align="center">出生日期</td>
+				    <tr  class="trF">
+				      <td class="tdnowidth">出生日期</td>
 				      <td>
 				      	<input type="text" size="25" onfocus="c.showMoreDay=false;c.show(this);" readonly="true"/>
 					  </td>
-				      <td align="center">所属部门</td>
+				      <td class="tdalign">所属部门</td>
 				      <td>
 				      	
 
@@ -103,18 +104,18 @@
 						
 					  </td>
 				    </tr>
-				    <tr  bgcolor="#FFFFFF">
+				    <tr class="trF">
 				      <td colspan="4">&nbsp;</td>
 				    </tr>
-				    <tr  bgcolor="#FFFFFF">
-				      <td width="18%" height="30" align="center">角色名称</td>
+				    <tr class="trF">
+				      <td class="td18">角色名称</td>
 				      <td width="82%" colspan="3">
 				      	<input type="checkbox" id="all">全选&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				      	<input type="checkbox" id="reverse">反选
 				      </td>
 				    </tr>
-				    <tr  bgcolor="#FFFFFF">
-				      <td width="18%" height="30" align="center">&nbsp;</td>
+				    <tr class="trF">
+				      <td class="td18">&nbsp;</td>
 				      <td width="82%" colspan="3">
 				      	<input type="checkbox">经理
 				      	<input type="checkbox">主管
@@ -127,14 +128,14 @@
 				      	<input type="checkbox">员工
 				      </td>
 				    </tr>
-				    <tr  bgcolor="#FFFFFF">
+				    <tr class="trF">
 				      <td colspan="4">&nbsp;</td>
 				    </tr>
 				</table>
 			</div>
 			<div class="order-botton">
 				<div style="margin:1px auto auto 1px;">
-					<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+					<table class="table100">
 					  <tr>
 					    <td>
 					    	<a href="javascript:document.forms[0].submit()"><img src="../../images/order_tuo.gif" border="0" /></a>

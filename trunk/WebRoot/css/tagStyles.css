@@ -1,0 +1,61 @@
+/*CSS for input.jsp*/
+.table100 {
+	width="100%";
+	border="0"; 
+	cellpadding="0"; 
+	cellspacing="0";
+}
+
+.table98 {
+	width="98%";
+	border="0";
+	cellpadding="0";
+	cellspacing="0";
+	align="center";
+}
+
+.trF {
+	bgcolor="#FFFFFF";
+}
+
+.td18 {
+	width="18%";
+	height="30";
+	align="center";
+}
+
+.td2no30 {
+	width="18%";
+	align="center";
+}
+
+.tdalign {
+	align="center";
+}
+
+.tdnowidth {
+	height="30";
+	align="center";
+}
+
+font-red {
+	color:"red";
+}
+
+.img {
+	background-image: url("../images/icon_1.gif");
+	background-repeat: no-repeat;
+	width: auto; /*or your image's width*/
+	height: auto; /*or your image's height*/
+	margin: 0;
+	padding: 0;
+}
+
+.img2 {
+	background-image: url("../images/icon_2.gif");
+	background-repeat: no-repeat;
+	width: auto; /*or your image's width*/
+	height: auto; /*or your image's height*/
+	margin: 0;
+	padding: 0;
+}
