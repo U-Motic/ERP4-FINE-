@@ -12,6 +12,9 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  *
  */
 public class StoreDaoImpl extends BaseDaoImpl<StoreModel> implements StoreDao{
+	/**
+	 * this method is used to do a qbc
+	 */
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){
 		StoreQueryModel sqm = (StoreQueryModel) qm;
 		//TODO 添加自定义查询规则

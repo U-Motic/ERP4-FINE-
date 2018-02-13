@@ -10,6 +10,10 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
  *
  */
 public class ExceptionInterceptor extends AbstractInterceptor{
+	
+	/**
+	 * this method returns the string for the invocation
+	 */
 	public String intercept(ActionInvocation invocation) throws Exception {
 		String toReturn = null;
 

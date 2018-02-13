@@ -23,6 +23,10 @@ public class SupplierAction extends BaseAction{
 	public SupplierQueryModel sqm = new SupplierQueryModel();
 
 	private SupplierEbi supplierEbi;
+	/**
+	 * this method is used to set the supplier ebi
+	 * @param supplierEbi
+	 */
 	public void setSupplierEbi(SupplierEbi supplierEbi) {
 		this.supplierEbi = supplierEbi;
 	}
