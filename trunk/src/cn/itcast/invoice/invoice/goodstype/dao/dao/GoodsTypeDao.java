@@ -10,7 +10,17 @@ import cn.itcast.invoice.util.base.BaseDao;
  */
 public interface GoodsTypeDao extends BaseDao<GoodsTypeModel> {
 
+	/**
+	 * this method gives you all by uuid
+	 * @param supplierUuid
+	 * @return
+	 */
 	public List<GoodsTypeModel> getAllBySupUuid(Long supplierUuid);
 
+	/**
+	 * this method gives you all union by supplier
+	 * @param uuid
+	 * @return
+	 */
 	public List<GoodsTypeModel> getAllUnionBySupplier(Long uuid);
 }

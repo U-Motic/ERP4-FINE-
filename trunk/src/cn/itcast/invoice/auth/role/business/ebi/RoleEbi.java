@@ -12,7 +12,19 @@ import cn.itcast.invoice.util.base.BaseEbi;
 @Transactional
 public interface RoleEbi extends BaseEbi<RoleModel> {
 
+	/**
+	 * this methond save the rolemodel
+	 * @param rm
+	 * @param resUuids
+	 * @param menuUuids
+	 */
 	public void save(RoleModel rm, Long[] resUuids, Long[] menuUuids);
 
+	/**
+	 * this method update the rolemodel
+	 * @param rm
+	 * @param resUuids
+	 * @param menuUuids
+	 */
 	public void update(RoleModel rm, Long[] resUuids, Long[] menuUuids);
 }

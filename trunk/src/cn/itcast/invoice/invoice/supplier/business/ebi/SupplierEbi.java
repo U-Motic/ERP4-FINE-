@@ -13,9 +13,13 @@ import cn.itcast.invoice.util.base.BaseEbi;
 @Transactional
 public interface SupplierEbi extends BaseEbi<SupplierModel> {
 
+	/**
+	 * this method gives you all Union
+	 * @return
+	 */
 	public List<SupplierModel> getAllUnion();
 	/**
-	 * èŽ·å�–å…·æœ‰å•†å“�çš„æ‰€æœ‰ä¾›åº”å•†ä¿¡æ�¯
+	 * Ã¨Å½Â·Ã¥ï¿½â€“Ã¥â€¦Â·Ã¦Å“â€°Ã¥â€¢â€ Ã¥â€œï¿½Ã§Å¡â€žÃ¦â€°â‚¬Ã¦Å“â€°Ã¤Â¾â€ºÃ¥Âºâ€�Ã¥â€¢â€ Ã¤Â¿Â¡Ã¦ï¿½Â¯
 	 * @return
 	 */
 	public List<SupplierModel> getAllUnionTwo();

@@ -34,6 +34,11 @@ public interface MenuEbi extends BaseEbi<MenuModel> {
 	 * @return
 	 */
 	public List<MenuModel> getParentMenuByEmp(Long uuid);
-	
+	/**
+	 * this method gives you the menu by Puuid
+	 * @param puuid
+	 * @param uuid
+	 * @return
+	 */
 	public List<MenuModel> getMenusByPuuidAndEmp(Long puuid, Long uuid);
 }

@@ -11,7 +11,17 @@ import cn.itcast.invoice.invoice.order.vo.OrderDetailModel;
  */
 public interface BillDao  {
 
+	/**
+	 * this method gives you bill by boods
+	 * @param bqm
+	 * @return
+	 */
 	public List<Object[]> getBillByGoods(BillQueryModel bqm);
 
+	/**
+	 * this method gives you bill details by goods
+	 * @param bqm
+	 * @return
+	 */
 	public List<OrderDetailModel> getBillDetailByGoods(BillQueryModel bqm);
 }

@@ -15,26 +15,31 @@ import cn.itcast.invoice.util.base.BaseEbi;
 @Transactional
 public interface EmpEbi extends BaseEbi<EmpModel> {
 	/**
-	 * æ ¹æ�®ç”¨æˆ·å��ï¼Œå¯†ç �è¿›è¡Œç™»é™†
-	 * @param userName ç”¨æˆ·å��
-	 * @param pwd å¯†ç �
-	 * @param lastLoginIp ç™»é™†IPåœ°å�€
+	 * Ã¦Â Â¹Ã¦ï¿½Â®Ã§â€�Â¨Ã¦Ë†Â·Ã¥ï¿½ï¿½Ã¯Â¼Å’Ã¥Â¯â€ Ã§Â ï¿½Ã¨Â¿â€ºÃ¨Â¡Å’Ã§â„¢Â»Ã©â„¢â€ 
+	 * @param userName Ã§â€�Â¨Ã¦Ë†Â·Ã¥ï¿½ï¿½
+	 * @param pwd Ã¥Â¯â€ Ã§Â ï¿½
+	 * @param lastLoginIp Ã§â„¢Â»Ã©â„¢â€ IPÃ¥Å“Â°Ã¥ï¿½â‚¬
 	 * @return
 	 */
 	public EmpModel login(String userName, String pwd,String lastLoginIp);
 	/**
-	 * ä¿®æ”¹å¯†ç �
-	 * @param userName ç”¨æˆ·å��
-	 * @param oldPwd åŽŸå§‹å¯†ç �
-	 * @param newPwd æ–°å¯†ç �
+	 * Ã¤Â¿Â®Ã¦â€�Â¹Ã¥Â¯â€ Ã§Â ï¿½
+	 * @param userName Ã§â€�Â¨Ã¦Ë†Â·Ã¥ï¿½ï¿½
+	 * @param oldPwd Ã¥Å½Å¸Ã¥Â§â€¹Ã¥Â¯â€ Ã§Â ï¿½
+	 * @param newPwd Ã¦â€“Â°Ã¥Â¯â€ Ã§Â ï¿½
 	 * @return
 	 */
 	public boolean changePwd(String userName, String oldPwd, String newPwd);
+	/**
+	 * this method is used to save ebi
+	 * @param em
+	 * @param roleUuids
+	 */
 	public void save(EmpModel em, Long[] roleUuids);
 	public void update(EmpModel em, Long[] roleUuids);
 	/**
-	 * æ ¹æ�®éƒ¨é—¨uuidèŽ·å�–éƒ¨é—¨å‘˜å·¥ä¿¡æ�¯
-	 * @param depUuid éƒ¨é—¨uuid
+	 * Ã¦Â Â¹Ã¦ï¿½Â®Ã©Æ’Â¨Ã©â€”Â¨uuidÃ¨Å½Â·Ã¥ï¿½â€“Ã©Æ’Â¨Ã©â€”Â¨Ã¥â€˜ËœÃ¥Â·Â¥Ã¤Â¿Â¡Ã¦ï¿½Â¯
+	 * @param depUuid Ã©Æ’Â¨Ã©â€”Â¨uuid
 	 * @return
 	 */
 	public List<EmpModel> getAllByDep(Long depUuid);

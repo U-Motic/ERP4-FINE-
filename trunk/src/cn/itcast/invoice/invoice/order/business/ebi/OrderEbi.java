@@ -31,6 +31,11 @@ public interface OrderEbi extends BaseEbi<OrderModel> {
 	 * @return
 	 */
 	public List<OrderModel> getAllNoCheckOrder(OrderQueryModel oqm, Integer pageNum, Integer pageCount);
+	/**
+	 * this method gives you count by tipes
+	 * @param oqm
+	 * @return
+	 */
 	public Integer getCountByTypes(OrderQueryModel oqm);
 	/**
 	 * é‡‡è´­è®¢å�•å®¡æ ¸é€šè¿‡
