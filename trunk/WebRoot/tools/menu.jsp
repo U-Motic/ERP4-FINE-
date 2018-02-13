@@ -13,7 +13,7 @@
 	</head>
 	
 	<body>
-		<ul id="black" class="filetree"></ul>
+		<ul id="black" styleclass="filetree"></ul>
 	</body>
 	<script type="text/javascript" src="menu.js">
 	</script>
