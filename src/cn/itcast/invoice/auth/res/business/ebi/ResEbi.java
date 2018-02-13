@@ -13,6 +13,11 @@ import cn.itcast.invoice.util.base.BaseEbi;
 @Transactional
 public interface ResEbi extends BaseEbi<ResModel> {
 
+	/**
+	 * this method save your res
+	 * @param rm
+	 * @param roleUuids
+	 */
 	public void save(ResModel rm, Long[] roleUuids);
 
 	public void update(ResModel rm, Long[] roleUuids);

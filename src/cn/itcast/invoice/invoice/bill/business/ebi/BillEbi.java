@@ -15,11 +15,27 @@ import cn.itcast.invoice.invoice.order.vo.OrderDetailModel;
 @Transactional
 public interface BillEbi {
 
+	/**
+	 * this method gives you the bill by goods
+	 * @param bqm
+	 * @return
+	 */
 	public List<Object[]> getBillByGoods(BillQueryModel bqm);
 
 	public List<OrderDetailModel> getBillDetailByGoods(BillQueryModel bqm);
 
+	/**
+	 * this method gives you the bill for pie
+	 * @param os
+	 * @param billList
+	 */
 	public void getBillForPie(OutputStream os, List<Object[]> billList);
 
+	/**
+	 * this method gives you excel bill
+	 * @param billList
+	 * @return
+	 * @throws Exception
+	 */
 	public InputStream getExcelBill(List<Object[]> billList) throws Exception;
 }

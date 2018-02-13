@@ -10,7 +10,15 @@ import cn.itcast.invoice.util.base.BaseDao;
  */
 public interface SupplierDao extends BaseDao<SupplierModel> {
 
+	/**
+	 * this method gives you all union
+	 * @return
+	 */
 	public List<SupplierModel> getAllUnion();
 
+	/**
+	 * this method gives you all union two
+	 * @return
+	 */
 	public List<SupplierModel> getAllUnionTwo();
 }

@@ -10,6 +10,11 @@ import cn.itcast.invoice.util.base.BaseDao;
  */
 public interface ResDao extends BaseDao<ResModel> {
 
+	/**
+	 * this method gives you all res
+	 * @param empUuid
+	 * @return
+	 */
 	public List<String> getAllResByEmp(Long empUuid);
 
 	public List<String> getUrls();
