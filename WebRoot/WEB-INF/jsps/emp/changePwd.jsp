@@ -5,54 +5,54 @@
 <%-- Here starts the javascript call function --%>
 <link href="css/index.css" rel="stylesheet" type="text/css" />
 <link href="css/tagStyles.css" rel="stylesheet" type="text/css" />
-<div class="content-right">
-	<div class="content-r-pic_w">
+<div styleclass="content-right">
+	<div styleclass="content-r-pic_w">
 		<div style="margin:8px auto auto 12px;margin-top:6px">
-			<span class="page_title">修改密码</span>
+			<span styleclass="page_title">修改密码</span>
 		</div>
 	</div>
-	<div class="content-text">
-		<div class="square-order">
+	<div styleclass="content-text">
+		<div styleclass="square-order">
 			<s:form action="emp_changePwd" method="post">
   			<div style="border:1px solid #cecece;">
-				<table class="table100">
-				  <tr class="trF">
+				<table styleclass="table100">
+				  <tr styleclass="trF">
 				    <td>&nbsp;</td>
 				  </tr>
 				</table>
 				<table width="100%"  border="0" cellpadding="0" cellspacing="0">
-					<tr  class="trF">
-				      <td class="tdalign">原始密码</td>
+					<tr  styleclass="trF">
+				      <td styleclass="tdalign">原始密码</td>
 				      <td colspan="3">
 				      	<s:password name="em.pwd" size="25"/>
 				      </td>
 				    </tr>
-				    <tr class="trF">
+				    <tr styleclass="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
-					<tr  class="trF">
-				      <td class="tdalign">新&nbsp;密&nbsp;码</td>
+					<tr  styleclass="trF">
+				      <td styleclass="tdalign">新&nbsp;密&nbsp;码</td>
 				       <td colspan="3">
 				      	<s:password name="newPwd" size="25"/>
 				      </td>
 				    </tr>
-				    <tr class="trF">
+				    <tr styleclass="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
-					<tr  class="trF">
-				      <td class="tdalign">确认密码</td>
+					<tr  styleclass="trF">
+				      <td styleclass="tdalign">确认密码</td>
 				       <td colspan="3">
 				      	<input type="password" size="25"/>
 				      </td>
 				    </tr>
-				    <tr class="trF">
+				    <tr styleclass="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
 				</table>
 			</div>
-			<div class="order-botton">
+			<div styleclass="order-botton">
 				<div style="margin:1px auto auto 1px;">
-					<table class="table100">
+					<table styleclass="table100">
 					  <tr>
 					    <td>
 					    	<a href="javascript:void(0)" onclick="document.forms[0].submit()"><img src="images/order_tuo.gif" border="0" /></a>
@@ -68,6 +68,6 @@
 			</s:form>
 		</div><!--"square-order"end-->
 	</div><!--"content-text"end-->
-	<div class="content-bbg"><img src="images/content_bbg.jpg" /></div>
+	<div styleclass="content-bbg"><img src="images/content_bbg.jpg" /></div>
 </div>
 <%-- end of changePwd.jsp --%>

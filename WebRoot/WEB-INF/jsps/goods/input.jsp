@@ -9,79 +9,79 @@
 <%-- Here starts the javascript call function --%>
 <script type="text/javascript" src="input.js">
 </script>
-<div class="content-right">
-	<div class="content-r-pic_w">
+<div styleclass="content-right">
+	<div styleclass="content-r-pic_w">
 		<div style="margin:8px auto auto 12px;margin-top:6px">
-			<span class="page_title">商品管理</span>
+			<span styleclass="page_title">商品管理</span>
 		</div>
 	</div>
-	<div class="content-text">
-		<div class="square-order">
+	<div styleclass="content-text">
+		<div styleclass="square-order">
 			<s:form action="goods_save" method="post">
 			<s:hidden name="gm.uuid"/>
   			<div style="border:1px solid #cecece;">
-				<table class="table100">
-				  <tr class="trF">
+				<table styleclass="table100">
+				  <tr styleclass="trF">
 				    <td>&nbsp;</td>
 				  </tr>
 				</table>
-				<table class="table100">
-				    <tr class="trF">
-				      <td class="td18">供&nbsp;应&nbsp;商</td>
+				<table styleclass="table100">
+				    <tr styleclass="trF">
+				      <td styleclass="td18">供&nbsp;应&nbsp;商</td>
 				      <td width="32%">
 				      	<s:select id="supplier" list="supplierList" listKey="uuid" listValue="name" cssStyle="width:190px"></s:select>
 				      </td>
-				      <td class="td2no30">商品类别</td>
+				      <td styleclass="td2no30">商品类别</td>
 				      <td width="32%">
 				      	<s:select name="gm.gtm.uuid" id="goodsType" list="gtmList" listKey="uuid" listValue="name" cssStyle="width:190px"></s:select>
 					  </td>
 				    </tr>
-				    <tr class="trF">
+				    <tr styleclass="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
-				    <tr class="trF">
-				      <td class="tdalign">商品名称</td>
+				    <tr styleclass="trF">
+				      <td styleclass="tdalign">商品名称</td>
 				      <td>
 				      	<s:textfield name="gm.name" size="25"/>
 				      </td>
-				      <td class="tdalign">产&nbsp;&nbsp;&nbsp;&nbsp;地</td>
+				      <td styleclass="tdalign">产&nbsp;&nbsp;&nbsp;&nbsp;地</td>
 				      <td >
 				      	<s:textfield name="gm.origin" size="25"/>
 				      </td>
 				    </tr>
-				     <tr class="trF">
+				     <tr styleclass="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
-				    <tr  class="trF">
-				      <td class="tdnowidth">生产厂家</td>
+				    <tr  styleclass="trF">
+				      <td styleclass="tdnowidth">生产厂家</td>
 				      <td>
 				      	<s:textfield name="gm.producer" size="25"/>
-				      <td class="tdalign">单&nbsp;&nbsp;&nbsp;&nbsp;位</td>
+				      <td styleclass="tdalign">单&nbsp;&nbsp;&nbsp;&nbsp;位</td>
 				      <td>
 				      	<s:textfield name="gm.unit" size="25"/>
 					  </td>
 				     </tr>
-				    <tr class="trF">
+				    <tr styleclass="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
-				    <tr  class="trF">
-				      <td class="tdnowidth">进货单价</td>
+				    <tr  styleclass="trF">
+				      <td styleclass="tdnowidth">进货单价</td>
 				      <td>
 				      	<s:textfield name="gm.inPrice" size="25"/>
 					  </td>
-				      <td class="tdalign">销售单价</td>
+				      <td styleclass="tdalign">销售单价</td>
 				      <td>
 				      	<s:textfield name="gm.outPrice" size="25"/>
 					  </td>
 				    </tr>
-				    <tr class="trF">
+				    <tr styleclass="trF">
 					  <td colspan="4">&nbsp;</td>
 					</tr>
 				</table>
 			</div>
-			<div class="order-botton">
+			<div styleclass="order-botton">
 				<div style="margin:1px auto auto 1px;">
-					<table class="table100">
+					<table styleclass="table100">
 					  <tr>
 					    <td>
 					    	<a href="javascript:document.forms[0].submit()"><img src="images/order_tuo.gif" border="0" /></a>
@@ -97,6 +97,6 @@
 			</s:form>
 		</div><!--"square-order"end-->
 	</div><!--"content-text"end-->
-	<div class="content-bbg"><img src="images/content_bbg.jpg" /></div>
+	<div styleclass="content-bbg"><img src="images/content_bbg.jpg" /></div>
 </div>
 <%-- end of input.jsp --%>
