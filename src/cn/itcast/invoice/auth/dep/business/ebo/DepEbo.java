@@ -17,10 +17,17 @@ import cn.itcast.invoice.util.exception.AppException;
 
 public class DepEbo implements DepEbi{
 	private DepDao depDao;
+	/**
+	 * this method set the DepDao
+	 * @param depDao
+	 */
 	public void setDepDao(DepDao depDao) {
 		this.depDao = depDao;
 	}
 
+	/**
+	 * this method saves the DepModel
+	 */
 	public void save(DepModel dm) {
 		//逻辑校验
 		if(dm.getName().trim().length() == 0){
@@ -34,26 +41,41 @@ public class DepEbo implements DepEbi{
 		depDao.save(dm);
 	}
 
+	/**
+	 * this method update the depModel
+	 */
 	public void update(DepModel dm) {
 		depDao.update(dm);
 	}
-
+	/**
+	 * this method delete the depModel
+	 */
 	public void delete(DepModel dm) {
 		depDao.delete(dm);
 	}
-	
+	/**
+	 * this method is used to get uudi
+	 */
 	public DepModel get(Serializable uuid) {
 		return depDao.get(uuid);
 	}
-	
+	/**
+	 * this method is used to getAll
+	 */
 	public List<DepModel> getAll() {
 		return depDao.getAll();
 	}
 
+	/**
+	 * this method is used to get all
+	 */
 	public List<DepModel> getAll(BaseQueryModel qm, Integer pageNum,Integer pageCount) {
 		return depDao.getAll(qm,pageNum,pageCount);
 	}
 
+	/**
+	 * this method is used to getCount
+	 */
 	public Integer getCount(BaseQueryModel qm) {
 		return depDao.getCount(qm);
 	}

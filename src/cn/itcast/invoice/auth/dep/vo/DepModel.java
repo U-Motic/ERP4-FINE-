@@ -13,7 +13,10 @@ public class DepModel implements Serializable{
 	private String name;
 	
 	private String tele;
-	
+	/**
+	 * this method is used to get the id
+	 * @return
+	 */
 	public Long getUuid() {
 		return segreto;
 	}
