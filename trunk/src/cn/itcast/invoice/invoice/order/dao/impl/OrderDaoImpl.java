@@ -16,6 +16,9 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  *
  */
 public class OrderDaoImpl extends BaseDaoImpl<OrderModel> implements OrderDao{
+	/**
+	 * this method is used to do the qbc
+	 */
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){
 		OrderQueryModel oqm = (OrderQueryModel) qm;
 		//TODO 添加自定义查询规则
@@ -24,17 +27,26 @@ public class OrderDaoImpl extends BaseDaoImpl<OrderModel> implements OrderDao{
 		}
 	}
 	
+	/**
+	 * this method is used to do the qbc
+	 */
 	public void doQbc2(DetachedCriteria dc,OrderQueryModel oqm,Integer[] types){
 		dc.add(Restrictions.in("type", types));
 		doQbc(dc,oqm);
 	}
 	
 	//暂定
+	/**
+	 * this method is used to get all the order model by types
+	 */
 	public List<OrderModel> getAllByTypes(OrderQueryModel oqm, Integer pageNum,Integer pageCount, Integer[] types) {
 		DetachedCriteria dc = DetachedCriteria.forClass(OrderModel.class);
 		doQbc2(dc,oqm,types);
 		return this.getHibernateTemplate().findByCriteria(dc,(pageNum-1)*pageCount,pageCount);
 	}
+	/**
+	 * this method is used to get the count by types
+	 */
 	public Integer getCountByTypes(OrderQueryModel oqm, Integer[] types) {
 		DetachedCriteria dc = DetachedCriteria.forClass(OrderModel.class);
 		dc.setProjection(Projections.rowCount());

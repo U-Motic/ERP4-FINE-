@@ -215,6 +215,10 @@ public class OrderModel implements Serializable{
 	public Set<OrderDetailModel> getOdms() {
 		return odms;
 	}
+	/**
+	 * this metod is used to set the Order detail model
+	 * @param odms
+	 */
 	public void setOdms(Set<OrderDetailModel> odms) {
 		this.odms = odms;
 	}

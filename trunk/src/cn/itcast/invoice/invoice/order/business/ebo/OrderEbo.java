@@ -31,6 +31,10 @@ public class OrderEbo implements OrderEbi{
 			OrderModel.ORDER_TYPE_OF_BUY_IN_STORE,
 			//ç¼ºå°‘1ç§�
 			};
+	/**
+	 * this method is used to set the order dao
+	 * @param orderDao
+	 */
 	public void setOrderDao(OrderDao orderDao) {
 		this.orderDao = orderDao;
 	}
@@ -38,7 +42,6 @@ public class OrderEbo implements OrderEbi{
 	 * this public element is a public element
 	 *
 	 */
-	
 	public void save(OrderModel om) {
 		orderDao.save(om);
 	}

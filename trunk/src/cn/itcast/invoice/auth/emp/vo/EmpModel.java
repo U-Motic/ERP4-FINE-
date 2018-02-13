@@ -149,6 +149,10 @@ public class EmpModel implements Serializable{
 		this.userName = userName;
 	}
 
+	/**
+	 * this method is used to get the password
+	 * @return
+	 */
 	public String getPwd() {
 		return pwd;
 	}

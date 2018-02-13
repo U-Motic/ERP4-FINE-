@@ -16,38 +16,61 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  */
 public class ResEbo implements ResEbi{
 	private ResDao resDao;
+	/**
+	 * this method is used to set the resDao
+	 * @param resDao
+	 */
 	public void setResDao(ResDao resDao) {
 		this.resDao = resDao;
 	}
 
+	/**
+	 * this method is used to save the ResModel
+	 */
 	public void save(ResModel rm) {
 		resDao.save(rm);
 	}
-
+	/**
+	 * this method is used to delete the ResModel
+	 */
 	public void delete(ResModel rm) {
 		resDao.delete(rm);
 	}
-
+	/**
+	 * this method is used to update the ResModel
+	 */
 	public void update(ResModel rm) {
 		resDao.update(rm);
 	}
-
+	/**
+	 * this method is used to get the uudi
+	 */
 	public ResModel get(Serializable uuid) {
 		return resDao.get(uuid);
 	}
-
+	/**
+	 * this method is used to get all teh resmodel
+	 */
 	public List<ResModel> getAll() {
 		return resDao.getAll();
 	}
-
+	/**
+	 * this method is used to get all the resmodel
+	 */
 	public List<ResModel> getAll(BaseQueryModel qm, Integer pageNum,Integer pageCount) {
 		return resDao.getAll(qm,pageNum,pageCount);
 	}
 
+	/**
+	 * this method is used to get the count 
+	 */
 	public Integer getCount(BaseQueryModel qm) {
 		return resDao.getCount(qm);
 	}
 
+	/**
+	 * this method is used to save the ResModel
+	 */
 	public void save(ResModel rm, Long[] roleUuids) {
 		Set<RoleModel> roles = new HashSet<RoleModel>();
 		for(Long uuid:roleUuids){
@@ -58,7 +81,9 @@ public class ResEbo implements ResEbi{
 		rm.setRoles(roles);
 		resDao.save(rm);
 	}
-
+	/**
+	 * this method is used to update the ResModel
+	 */
 	public void update(ResModel rm, Long[] roleUuids) {
 		Set<RoleModel> roles = new HashSet<RoleModel>();
 		for(Long uuid:roleUuids){
@@ -70,10 +95,16 @@ public class ResEbo implements ResEbi{
 		resDao.update(rm);
 	}
 
+	/**
+	 * this method is used to get all the res model by emp
+	 */
 	public List<String> getAllResByEmp(Long empUuid) {
 		return resDao.getAllResByEmp(empUuid);
 	}
 
+	/**
+	 * this method is used to get all the urls
+	 */
 	public List<String> getAllUrl() {
 		return resDao.getUrls();
 	}
