@@ -10,7 +10,9 @@ import java.text.DecimalFormat;
  */
 public class FormatUtil {
 	public static String formatDate(Long time){
-		if(time == null) return "-";
+		if(time == null) {
+			return "-";
+			}
 		LocalDate date = LocalDate.now();
 		  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
 		  String text = date.format(formatter);
@@ -18,7 +20,9 @@ public class FormatUtil {
 		return  parsedDate.toString();
 	}
 	public static String formatTime(Long time){
-		if(time == null) return "-";
+		if(time == null) {
+			return "-";
+			}
 		LocalDate date = LocalDate.now();
 		  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH mm ss");
 		  String text = date.format(formatter);
@@ -26,7 +30,9 @@ public class FormatUtil {
 		return  parsedDate.toString();
 	}
 	public static String formatDateTime(Long time){
-		if(time == null) return "-";
+		if(time == null) {
+			return "-";
+			}
 		LocalDate date = LocalDate.now();
 		  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd HH mm ss");
 		  String text = date.format(formatter);

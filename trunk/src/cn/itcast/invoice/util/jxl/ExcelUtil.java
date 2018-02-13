@@ -173,8 +173,8 @@ public class ExcelUtil {
 			int align,String borderStyle){
 		
 		try {
-			if(colour == null) colour = Colour.BLACK;
-			if(bgColour == null) bgColour = Colour.WHITE;
+			if(colour == null) {colour = Colour.BLACK;}
+			if(bgColour == null) {bgColour = Colour.WHITE;}
 			WritableFont wf = new WritableFont(
 					//Imposta il carattere
 					WritableFont.createFont(fontName), 
