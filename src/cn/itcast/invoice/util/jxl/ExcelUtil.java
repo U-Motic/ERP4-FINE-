@@ -35,12 +35,16 @@ public class ExcelUtil {
 	 * @return 
 	 */
 	public static WritableWorkbook cWorkbook(OutputStream os){
+		WritableWorkbook toReturn = null;
 		try {
-			return Workbook.createWorkbook(os);
+			toReturn = Workbook.createWorkbook(os);
 		} catch (IOException e) {
 			 System.out.println("Something was wrong");
-			return null;
+			toReturn = null;
 		} 
+		finally {
+			return toReturn;
+		}
 	}
 	
 	/**

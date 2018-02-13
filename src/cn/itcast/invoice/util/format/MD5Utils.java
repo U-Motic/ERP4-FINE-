@@ -11,7 +11,8 @@ public class MD5Utils {
 	 */
 
 	public static String sha256(String base) {
-	    try{
+	   String toReturn = null;
+		try{
 	        MessageDigest digest = MessageDigest.getInstance("SHA-256");
 	        byte[] hash = digest.digest(base.getBytes("UTF-8"));
 	        StringBuffer hexString = new StringBuffer();
@@ -24,10 +25,13 @@ public class MD5Utils {
 	            hexString.append(hex);
 	        }
 
-	        return hexString.toString();
+	        toReturn = hexString.toString();
 	    } catch(Exception ex){
 	    	 System.out.println("Something was wrong");
-	    	 return "-1";
+	    	 toReturn = "-1";
+	    }
+	    finally {
+	    	return toReturn;
 	    }
 	}
 

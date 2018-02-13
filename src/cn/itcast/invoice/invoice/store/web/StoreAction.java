@@ -155,14 +155,7 @@ public class StoreAction extends BaseAction{
 	 *
 	 */
 	public String ajaxInGoods(){
-		try {
-			odm = storeEbi.inGoods(odmUuid,goodsUuid,storeUuid,num,getLogin());
-		} catch (AppException e) {
-			if(e.getMessage().equals("aa")){
-				msg = true;
-				return "ajaxInGoods";
-			}
-		}
+		odm = storeEbi.inGoods(odmUuid,goodsUuid,storeUuid,num,getLogin());
 		
 		OrderModel om = odm.getOm();
 		int sum = 0;

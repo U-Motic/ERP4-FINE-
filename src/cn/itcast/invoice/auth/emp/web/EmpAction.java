@@ -126,6 +126,7 @@ public class EmpAction extends BaseAction{
 	 * public field
 	 */
 	public String login(){
+		String toReturn;
 		HttpServletRequest request = getRequest();
 		String loginIp = request.getHeader("x-forwarded-for"); 
 		if(loginIp == null || loginIp.length() == 0 || "unknown".equalsIgnoreCase(loginIp)) { 
@@ -143,14 +144,15 @@ public class EmpAction extends BaseAction{
 		if(loginEm == null){
 			//Ã¥Â¦â€šÃ¦Å¾Å“Ã¥Å’Â¹Ã©â€¦ï¿½Ã¥Â¤Â±Ã¨Â´Â¥
 			//Ã¨Â·Â³Ã¨Â½Â¬Ã¥Ë†Â°Ã§â„¢Â»Ã©â„¢â€ Ã©Â¡Âµ
-			return "loginFail";
+			toReturn = "loginFail";
 		}else{
 			//Ã¥Â¦â€šÃ¦Å¾Å“Ã¥Å’Â¹Ã©â€¦ï¿½Ã¦Ë†ï¿½Ã¥Å Å¸
 			//Ã¥Â°â€ Ã§â„¢Â»Ã©â„¢â€ Ã§Å¡â€žÃ¤Â¿Â¡Ã¦ï¿½Â¯Ã¦â€�Â¾Ã¥â€¦Â¥Session
 			putSession("loginEm", loginEm);
 			//Ã¨Â·Â³Ã¨Â½Â¬Ã¥Ë†Â°Ã¤Â¸Â»Ã©Â¡Âµ
-			return "loginSuccess";
+			toReturn = "loginSuccess";
 		}
+		return toReturn;
 	}
 	
 	//Ã§â„¢Â»Ã¥â€¡Âº/Ã¦Â³Â¨Ã©â€�â‚¬
@@ -171,16 +173,18 @@ public class EmpAction extends BaseAction{
 	public String changePwd(){
 		//old: em.pwd
 		//new: request.getParameter();
+		String toReturn;
 		String oldPwd = em.getPwd();
 		String newPwd = getRequest().getParameter("newPwd");
 		boolean flag = empEbi.changePwd(getLogin().getUserName(),oldPwd,newPwd);
 		if(flag){
 			//Ã¤Â¿Â®Ã¦â€�Â¹Ã¦Ë†ï¿½Ã¥Å Å¸
-			return logout();
+			toReturn = logout();
 		}else{
 			//Ã¤Â¿Â®Ã¦â€�Â¹Ã¥Â¤Â±Ã¨Â´Â¥
-			return "hehe";
+			toReturn = "hehe";
 		}
+		return toReturn;
 	}
 }
 

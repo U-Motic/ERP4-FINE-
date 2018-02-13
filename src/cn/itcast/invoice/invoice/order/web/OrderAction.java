@@ -429,7 +429,7 @@ public class OrderAction extends BaseAction{
 			List<OrderModel> orderList = orderEbi.getAllTasks(oqm,pageNum,pageCount);
 			put("orderList",orderList);
 			//ÃƒÂ¨Ã‚Â·Ã‚Â³ÃƒÂ¨Ã‚Â½Ã‚Â¬ÃƒÂ©Ã‚Â¡Ã‚ÂµÃƒÂ©Ã¯Â¿Â½Ã‚Â¢
-			return "assignTaskList";
+			toReturn = "assignTaskList";
 		}
 		else if (check ==2) {
 			//ÃƒÂ¥Ã…Â Ã‚Â ÃƒÂ¨Ã‚Â½Ã‚Â½ÃƒÂ¨Ã‚Â¿Ã¯Â¿Â½ÃƒÂ¨Ã‚Â¾Ã¢â‚¬Å“ÃƒÂ©Ã†â€™Ã‚Â¨ÃƒÂ©Ã¢â‚¬â€�Ã‚Â¨ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¦Ã¢â‚¬Â°Ã¢â€šÂ¬ÃƒÂ¦Ã…â€œÃ¢â‚¬Â°ÃƒÂ¥Ã¢â‚¬ËœÃ‹Å“ÃƒÂ¥Ã‚Â·Ã‚Â¥
@@ -437,7 +437,7 @@ public class OrderAction extends BaseAction{
 			List<EmpModel> empList = empEbi.getAllByDep(depUuid);
 			put("empList",empList);
 			om = orderEbi.get(om.getUuid());
-			return "assignTaskDetail";
+			toReturn = "assignTaskDetail";
 		}
 		else {
 			toReturn = "The Value is not correct, please read documentation!";
