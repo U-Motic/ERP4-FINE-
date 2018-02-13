@@ -14,6 +14,9 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  *
  */
 public class DepDaoImpl extends BaseDaoImpl<DepModel> implements DepDao{
+	/**
+	 * this method is used to do a Qbc
+	 */
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){
 		DepQueryModel dqm = (DepQueryModel) qm;
 		
