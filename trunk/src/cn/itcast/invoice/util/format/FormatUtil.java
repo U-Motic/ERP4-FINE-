@@ -10,34 +10,40 @@ import java.text.DecimalFormat;
  */
 public class FormatUtil {
 	public static String formatDate(Long time){
+		String toReturn;
 		if(time == null) {
-			return "-";
-			}
+			toReturn = "-";
+			}else {
 		LocalDate date = LocalDate.now();
 		  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
 		  String text = date.format(formatter);
 		  LocalDate parsedDate = LocalDate.parse(text, formatter);
-		return  parsedDate.toString();
+		toReturn = parsedDate.toString();}
+		return toReturn;
 	}
 	public static String formatTime(Long time){
+		String toReturn;
 		if(time == null) {
-			return "-";
-			}
+			toReturn = "-";
+			}else {
 		LocalDate date = LocalDate.now();
 		  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH mm ss");
 		  String text = date.format(formatter);
 		  LocalDate parsedDate = LocalDate.parse(text, formatter);
-		return  parsedDate.toString();
+		  toReturn = parsedDate.toString();}
+		return toReturn;
 	}
 	public static String formatDateTime(Long time){
+		String toReturn;
 		if(time == null) {
-			return "-";
-			}
+			toReturn = "-";
+			}else {
 		LocalDate date = LocalDate.now();
 		  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd HH mm ss");
 		  String text = date.format(formatter);
 		  LocalDate parsedDate = LocalDate.parse(text, formatter);
-		return  parsedDate.toString();
+		  toReturn = parsedDate.toString();}
+	return toReturn;
 	}
 	//å°†ä¸€ä¸ªå°�æ•°æ˜¾ç¤ºä¸¤ä½�å°�æ•°
 	public static String formatMoney(Double money){
