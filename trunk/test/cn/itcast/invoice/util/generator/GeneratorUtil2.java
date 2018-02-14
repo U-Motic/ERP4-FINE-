@@ -28,12 +28,11 @@ public class GeneratorUtil2 {
 	private String small;
 	private String little;
 	
+	
 	/**
-
-	 * 
-
-	 * @throws Exception
-
+	 * this method write on a file
+	 * @param bw
+	 * @throws IOException
 	 */
 	public void funzion5(BufferedWriter bw) throws IOException {
 		bw.newLine();
@@ -51,11 +50,9 @@ public class GeneratorUtil2 {
 	
 	
 	/**
-
-	 * 
-
-	 * @throws Exception
-
+	 * ths method writes on a file
+	 * @param bw
+	 * @throws IOException
 	 */
 	public void funzion8(BufferedWriter bw) throws IOException {
 		bw.newLine();
@@ -71,11 +68,9 @@ public class GeneratorUtil2 {
 	
 	
 	/**
-
-	 * 
-
-	 * @throws Exception
-
+	 * this method writes on a file
+	 * @param bw
+	 * @throws IOException
 	 */
 public void funzion7(BufferedWriter bw) throws IOException {
 		bw.write(qwe6);
@@ -92,14 +87,12 @@ public void funzion7(BufferedWriter bw) throws IOException {
 	}
 	
 
-
 /**
-
- * 
-
- * @throws Exception
-
- */	public void funzion6(BufferedWriter bw) throws IOException {
+ * this method writes on a file
+ * @param bw
+ * @throws IOException
+ */
+public void funzion6(BufferedWriter bw) throws IOException {
 		bw.newLine();
 		bw.newLine();
 		bw.write(rep);
