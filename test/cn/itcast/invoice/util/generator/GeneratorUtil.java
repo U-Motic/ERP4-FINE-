@@ -27,6 +27,11 @@ public class GeneratorUtil {
 	private String small;
 	private String little;
 
+	/**
+	 * this method is used to test
+	 * @param clazz
+	 * @throws Exception
+	 */
 	public GeneratorUtil(Class clazz)throws Exception{
 		this.clazz = clazz;
 		//-1.Ã¦â€¢Â°Ã¦ï¿½Â®Ã¥Ë†ï¿½Ã¥Â§â€¹Ã¥Å’â€“

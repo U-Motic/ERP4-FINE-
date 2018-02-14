@@ -26,51 +26,95 @@ public class StoreEbo implements StoreEbi{
 	private StoreDetailDao storeDetailDao;
 	private OrderDetailDao orderDetailDao;
 	private StoreOperDao storeOperDao;
-	
+	/**
+	 * this method is used to set store oper dao
+	 * @param storeOperDao
+	 */
 	public void setStoreOperDao(StoreOperDao storeOperDao) {
 		this.storeOperDao = storeOperDao;
 	}
 
+	/**
+	 * this method is used to set order detail dao
+	 * @param orderDetailDao
+	 */
 	public void setOrderDetailDao(OrderDetailDao orderDetailDao) {
 		this.orderDetailDao = orderDetailDao;
 	}
-
+	/**
+	 * this method is used to set store detail dao
+	 * @param storeDetailDao
+	 */
 	public void setStoreDetailDao(StoreDetailDao storeDetailDao) {
 		this.storeDetailDao = storeDetailDao;
 	}
 
+	/**
+	 * this method is used to setstore  dao
+	 * @param storeDao
+	 */
 	public void setStoreDao(StoreDao storeDao) {
 		this.storeDao = storeDao;
 	}
 
+	/**
+	 * this method is used to save sm
+	 */
 	public void save(StoreModel sm) {
 		storeDao.save(sm);
 	}
 
+	/**
+	 * this method is delete to save sm
+	 */
 	public void delete(StoreModel sm) {
 		storeDao.delete(sm);
 	}
 
+	/**
+	 * this method is used to update sm
+	 */
 	public void update(StoreModel sm) {
 		storeDao.update(sm);
 	}
 
+	/**
+	 * this method is used to get uuid
+	 */
 	public StoreModel get(Serializable uuid) {
 		return storeDao.get(uuid);
 	}
 
+	/**
+	 * this method is used to get all store model
+	 */
 	public List<StoreModel> getAll() {
 		return storeDao.getAll();
 	}
-
+	/**
+	 * this method is used to get all store model
+	 */
 	public List<StoreModel> getAll(BaseQueryModel qm, Integer pageNum,Integer pageCount) {
 		return storeDao.getAll(qm,pageNum,pageCount);
 	}
-
+	/**
+	 * this method is used to get integer count
+	 */
 	public Integer getCount(BaseQueryModel qm) {
 		return storeDao.getCount(qm);
 	}
 
+	/**
+	 * this function is used in this class
+	 * @param odmUuid
+	 * @param goodsUuid
+	 * @param storeUuid
+	 * @param num
+	 * @param login
+	 * @param sm
+	 * @param gm
+	 * @throws AppException
+	 */
 	private void fun(Long odmUuid ,Long goodsUuid, Long storeUuid, Integer num,EmpModel login,StoreModel sm,GoodsModel gm) throws AppException {
 		//Ã¥â€¦Â¥Ã¥Âºâ€œÃ§Â©Â¶Ã§Â«Å¸Ã¨Â¦ï¿½Ã¥ï¿½Å¡Ã¤Â»â‚¬Ã¤Â¹Ë†Ã¯Â¼Å¸
 				//1.Ã¥Å½Å¸Ã¥Â§â€¹Ã¨Â®Â¢Ã¥ï¿½â€¢Ã¦ËœÅ½Ã§Â»â€ Ã¤Â¸Â­Ã§Å¡â€žÃ¥Â·Â²Ã¥â€¦Â¥Ã¥Âºâ€œÃ¦â€¢Â°Ã©â€¡ï¿½Ã¦â€ºÂ´Ã¦â€“Â°
@@ -114,7 +158,17 @@ public class StoreEbo implements StoreEbi{
 		//Ã¤Â¿Â®Ã¦â€�Â¹Ã§Â»â€œÃ¥ï¿½â€¢Ã¦â€”Â¶Ã©â€”Â´
 		om.setCompleteTime(System.currentTimeMillis());
 	}
-	
+	/**
+	 * this method is used in this class
+	 * @param odmUuid
+	 * @param goodsUuid
+	 * @param storeUuid
+	 * @param num
+	 * @param login
+	 * @param om
+	 * @return
+	 * @throws AppException
+	 */
 	public OrderDetailModel inGoods(Long odmUuid ,Long goodsUuid, Long storeUuid, Integer num,EmpModel login, OrderModel om) throws AppException {
 		GoodsModel gm = new GoodsModel();
 		//gm.setUuid(goodsUuid);
@@ -145,6 +199,9 @@ public class StoreEbo implements StoreEbi{
 		return null;
 	}
 
+	/**
+	 * this method is used to set ingoods
+	 */
 	@Override
 	public OrderDetailModel inGoods(Long odmUuid, Long goodsUuid, Long storeUuid, Integer num, EmpModel login) {
 		return null;

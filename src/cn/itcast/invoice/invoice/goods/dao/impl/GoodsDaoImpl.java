@@ -25,7 +25,11 @@ public class GoodsDaoImpl extends BaseDaoImpl<GoodsModel> implements GoodsDao{
 	 * @param qm
 	 */
 	final static String res="%+gqm.getName().trim()+%";
-	
+	/**
+	 * this method is used to add gtm
+	 * @param gqm
+	 * @param dc
+	 */
 	public static void addGtm(GoodsQueryModel gqm, DetachedCriteria dc){
 		if(gqm.getGtm()!=null && gqm.getGtm().getSm()!=null && gqm.getGtm().getSm().getUuid()!=null && gqm.getGtm().getSm().getUuid()!=-1){
 			
@@ -110,8 +114,9 @@ public class GoodsDaoImpl extends BaseDaoImpl<GoodsModel> implements GoodsDao{
 		}
 	}
 
-	
-	
+	/**
+	 * this method is used to do a qbc
+	 */
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){
 		GoodsQueryModel gqm = (GoodsQueryModel) qm;
 		
@@ -126,16 +131,25 @@ public class GoodsDaoImpl extends BaseDaoImpl<GoodsModel> implements GoodsDao{
 		
 	}
 
+	/**
+	 * this method is used to get all by uuid
+	 */
 	public List<GoodsModel> getAllByGtmUuid(Long gtmUuid) {
 		String hql = "from GoodsModel where gtm.uuid = ?";
 		return this.getHibernateTemplate().find(hql,gtmUuid);		
 	}
 
+	/**
+	 * this method is used to update use numbert
+	 */
 	public void updateUseNum() {
 		String hql = "update GoodsModel g set g.useNum = ( select count(odm.gm.uuid) from OrderDetailModel odm where odm.gm.uuid = g.uuid )";
 		this.getHibernateTemplate().bulkUpdate(hql);
 	}
 
+	/**
+	 * this method is used to get store warn info
+	 */
 	public List<Object[]> getStoreWarnInfo() {
 		
 		String sql = "select gm.name,sum(sdm.num)>gm.maxNum,sum(sdm.num)<gm.minNum from tbl_storedetail sdm,tbl_goods gm where gm.uuid = sdm.goodsUuid group by goodsUuid ";
