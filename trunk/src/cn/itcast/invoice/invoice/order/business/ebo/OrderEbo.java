@@ -33,6 +33,10 @@ public class OrderEbo implements OrderEbi{
 			};
 	private Integer[] nums;
 	private Double[] prices;
+	/**
+	 * this method is used to set order dao
+	 * @param orderDao
+	 */
 	public void setOrderDao(OrderDao orderDao) {
 		this.orderDao = orderDao;
 	}
@@ -94,7 +98,19 @@ public class OrderEbo implements OrderEbi{
 	}
 	
 	
-	
+	/**
+	 * this method is used in this class
+	 * @param i
+	 * @param odms
+	 * @param goodsUuids
+	 * @param gm
+	 * @param odm
+	 * @param totalPrice
+	 * @param om
+	 * @param totalNum
+	 * @param totalPrice1
+	 * @param om1
+	 */
 	private void funz(int i, Set<OrderDetailModel> odms, Long[] goodsUuids, GoodsModel gm, OrderDetailModel odm,Double totalPrice, OrderModel om,Integer totalNum, Double totalPrice1, OrderModel om1) {
 		Long goodsUuid = goodsUuids[i];
 		Integer num = nums[i];
@@ -117,7 +133,14 @@ public class OrderEbo implements OrderEbi{
 		odms.add(odm);
 	
 	}
-	
+	/**
+	 * this method is used in this class
+	 * @param emInt
+	 * @param omInt
+	 * @param goodsUuidsInt
+	 * @param numsInt
+	 * @param pricesInt
+	 */
 	private void funz2(EmpModel emInt,OrderModel omInt, Long[] goodsUuidsInt, Integer[] numsInt,Double[] pricesInt) {
 		String orderNum = System.currentTimeMillis()+""+emInt.getUuid();
 		omInt.setOrderNum(MD5Utils.sha256(orderNum));
