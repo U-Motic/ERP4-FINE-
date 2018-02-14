@@ -16,6 +16,7 @@ import cn.itcast.invoice.util.format.FormatUtil;
  */
 @Transactional
 public class QuartzTasks {
+	private final static int onetwothree = 123;
 	private GoodsDao goodsDao;
 	private JavaMailSenderImpl mailSender;
 	
@@ -39,7 +40,7 @@ public class QuartzTasks {
 	 * this method is goodsDao to update use num
 	 */
 	public void goodsUseNumUpdate(){
-		System.out.println(123);
+		System.out.println(onetwothree);
 		//ÃƒÂ¨Ã‚Â°Ã†â€™ÃƒÂ§Ã¢â‚¬ï¿½Ã‚Â¨goodsÃƒÂ¦Ã‚Â¨Ã‚Â¡ÃƒÂ¥Ã¯Â¿Â½Ã¢â‚¬â€�ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾daoÃƒÂ¦Ã¢â‚¬Â°Ã‚Â§ÃƒÂ¨Ã‚Â¡Ã…â€™ÃƒÂ¥Ã‚Â¯Ã‚Â¹ÃƒÂ¥Ã‚ÂºÃ¢â‚¬ï¿½ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾updateÃƒÂ¨Ã‚Â¯Ã‚Â­ÃƒÂ¥Ã¯Â¿Â½Ã‚Â¥
 		/*
 		update 
