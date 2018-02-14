@@ -187,9 +187,9 @@ public class OrderAction extends BaseAction{
 	 */
 	private String funct1(int flag, List<SupplierModel> supplierList, int i) {
 		
-		if(flag==1) {
-			
-	    }else supplierList.remove(i);
+		if(flag!=1) {
+			supplierList.remove(i);
+	    }
 	
 
 	List<GoodsTypeModel> gtmListint = goodsTypeEbi.getAllUnionBySupplier(supplierList.get(0).getUuid());
