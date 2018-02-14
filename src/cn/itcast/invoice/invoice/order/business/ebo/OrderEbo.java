@@ -21,6 +21,14 @@ import cn.itcast.invoice.util.format.MD5Utils;
  *
  */
 public class OrderEbo implements OrderEbi{
+	private final Integer[] taskTypes = {
+			OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS,
+			OrderModel.ORDER_TYPE_OF_BUY_BUYING,
+			OrderModel.ORDER_TYPE_OF_BUY_IN_STORE,
+			OrderModel.ORDER_TYPE_OF_BUY_END,
+			//ç¼ºå°‘12ç§�
+			//å…±è®¡16ç§�çŠ¶æ€�
+			};
 	
 	private OrderDao orderDao;
 	/**
@@ -269,18 +277,8 @@ public class OrderEbo implements OrderEbi{
 		om.setCheckTime(System.currentTimeMillis());
 		om.setChecker(em);
 	}
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	private final Integer[] taskTypes = {
-			OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS,
-			OrderModel.ORDER_TYPE_OF_BUY_BUYING,
-			OrderModel.ORDER_TYPE_OF_BUY_IN_STORE,
-			OrderModel.ORDER_TYPE_OF_BUY_END,
-			//ç¼ºå°‘12ç§�
-			//å…±è®¡16ç§�çŠ¶æ€�
-			};
+	
+	
 	/**
 	 * this public element is a public element
 	 *
