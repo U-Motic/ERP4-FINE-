@@ -6,6 +6,7 @@ import java.security.MessageDigest;
  *
  */
 public class MD5Utils {
+	private final static int zeroxff = 0xff;
 	/**
 	 * 使用md5的算法进行加密
 	 */
@@ -18,7 +19,7 @@ public class MD5Utils {
 	        StringBuffer hexString = new StringBuffer();
 
 	        for (int i = 0; i < hash.length; i++) {
-	            String hex = Integer.toHexString(0xff & hash[i]);
+	            String hex = Integer.toHexString(zeroxff & hash[i]);
 	            if(hex.length() == 1) {
 	            	hexString.append('0');
 	            }
