@@ -16,8 +16,8 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  */
 public class EmpDaoImpl extends BaseDaoImpl<EmpModel> implements EmpDao{
 	final String res = "%+eqm.getUserName().trim()+%";
-	public final static int two = 2, zero = 0;
-	public final static long eightysix = 86400000L;
+	private final static int two = 2, zero = 0;
+	private final static long eightysix = 86400000L;
 	/**
 	 * this method is used to add user name
 	 * @param dc

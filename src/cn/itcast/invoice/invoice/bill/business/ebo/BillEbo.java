@@ -34,17 +34,13 @@ import cn.itcast.invoice.util.jxl.ExcelUtil;
  *
  */
 public class BillEbo implements BillEbi{
-	/**
-	 * public element
-	 */
-	public static int twenty = 20;
 	
-	/**
-	 * public element
-	 */
-	public final static int fourteen = 14, twelve = 12, ten = 10, fourfivesix = 456, threesixO = 360, one = 1, two = 2, three = 3, four = 4, five = 5, 
+	private static int twenty = 20;
+	
+	
+	private final static int fourteen = 14, twelve = 12, ten = 10, fourfivesix = 456, threesixO = 360, one = 1, two = 2, three = 3, four = 4, five = 5, 
 			twentyfive = 25, fifteen = 15, thirtyseven = 37, zero = 0, six = 6, twentythree = 23, eight = 8, twentyfour = 24, eighteen = 18;
-	public final static double zerozero2D = 0.02D;
+	private final static double zerozero2D = 0.02D;
 	private static final GoodsModel[] objs = null;
 
 	static {
