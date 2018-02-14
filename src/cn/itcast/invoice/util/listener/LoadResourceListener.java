@@ -22,6 +22,7 @@ import javax.servlet.ServletContextListener;
  *
  */
 public class LoadResourceListener implements ServletContextListener{
+	private final static int zero = 0, one = 1, two = 2;
 	Properties props = new Properties();
 	FileInputStream in = null;
 	
@@ -49,7 +50,7 @@ public class LoadResourceListener implements ServletContextListener{
 		 */
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(getDBInfo().get(0), getDBInfo().get(1), getDBInfo().get(2));
+			conn = DriverManager.getConnection(getDBInfo().get(zero), getDBInfo().get(one), getDBInfo().get(two));
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("select url from tbl_res");
 			List<String> temp = new ArrayList<String>();

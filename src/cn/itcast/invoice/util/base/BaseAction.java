@@ -14,6 +14,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *
  */
 public class BaseAction extends ActionSupport{
+	private final static int six = 6, zero = 0;
 	/**
 	 * this public element is a public element
 	 *
@@ -68,7 +69,7 @@ public class BaseAction extends ActionSupport{
 	public String getActionName() {
 		//æ ¹æ�®å½“å‰�æ‰§è¡Œçš„Actionç±»èŽ·å�–Actionç±»çš„å��ç§°ä¸­çš„å±€éƒ¨å­—ç¬¦ä¸²
 		String actionName =getClass().getSimpleName();	//DepAction
-		String subName = actionName.substring(0,actionName.length()-6);
+		String subName = actionName.substring(zero,actionName.length()-six);
 		return subName.substring(0,1).toLowerCase()+subName.substring(1);
 	} 
 	

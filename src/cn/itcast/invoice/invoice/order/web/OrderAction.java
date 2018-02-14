@@ -24,6 +24,9 @@ import cn.itcast.invoice.util.base.BaseAction;
  *
  */
 public class OrderAction extends BaseAction{
+	
+	
+	private final static int seven = 7;
 	/**
 	 * this public elfgjhement is a public element
 	 *
@@ -179,6 +182,13 @@ public class OrderAction extends BaseAction{
 		return INPUT;
 	}
 	
+	/**
+	 * this method returns the string buyinput
+	 * @param flag
+	 * @param supplierList
+	 * @param i
+	 * @return
+	 */
 	private String funct1(int flag, List<SupplierModel> supplierList, int i) {
 		
 		if(flag==1) {
@@ -215,7 +225,8 @@ public class OrderAction extends BaseAction{
 				}
 			}
 			
-			funct1(flag,supplierList,7);
+			
+			funct1(flag,supplierList,seven);
 		}
 	
 
@@ -250,6 +261,13 @@ public class OrderAction extends BaseAction{
 		return "ajaxGetGtmAndGm";
 	}
 	
+	/**
+	 * this method returns the string ajax
+	 * @param flag
+	 * @param i
+	 * @param uuids
+	 * @return
+	 */
 private String funz2(int flag, int i, Set<Long> uuids) {
 if(flag ==1){
 	i=0;
@@ -312,6 +330,10 @@ return "ajaxGetGtmAndGm";
 	}
 	
 	
+	/**
+	 * this method returs to_list
+	 * @return
+	 */
 	public String buyOrder(){
 			orderEbi.save(getLogin(),om,goodsUuids,nums,prices);
 		return TO_LIST;
