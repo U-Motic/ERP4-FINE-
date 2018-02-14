@@ -16,7 +16,7 @@ public class LoginInterceptor extends AbstractInterceptor {
 	 *  @throws Exception
 	 */
 	public String intercept(ActionInvocation invocation) throws Exception {
-		String toReturn;
+		String toReturn= null;
 
 		//Ã¥Â¦â€šÃ¦Å¾Å“Ã¦ËœÂ¯Ã¨Â·Â³Ã¨Â½Â¬Ã¥Ë†Â°Ã§â„¢Â»Ã©â„¢â€ Ã©Â¡ÂµÃ§Å¡â€žÃ¦â€œï¿½Ã¤Â½Å“Ã¯Â¼Å’Ã¦â€�Â¾Ã¨Â¡Å’
 		String an = invocation.getProxy().getActionName(); //pages_login
