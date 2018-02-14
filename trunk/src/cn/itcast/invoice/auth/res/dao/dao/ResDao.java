@@ -17,5 +17,10 @@ public interface ResDao extends BaseDao<ResModel> {
 	 */
 	public List<String> getAllResByEmp(Long empUuid);
 
+	
+	/**
+	 * this method returns a list
+	 * @return
+	 */
 	public List<String> getUrls();
 }

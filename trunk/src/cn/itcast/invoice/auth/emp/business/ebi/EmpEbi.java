@@ -36,6 +36,11 @@ public interface EmpEbi extends BaseEbi<EmpModel> {
 	 * @param roleUuids
 	 */
 	public void save(EmpModel em, Long[] roleUuids);
+	/**
+	 * this method updates
+	 * @param em
+	 * @param roleUuids
+	 */
 	public void update(EmpModel em, Long[] roleUuids);
 	/**
 	 * Ã¦Â Â¹Ã¦ï¿½Â®Ã©Æ’Â¨Ã©â€”Â¨uuidÃ¨Å½Â·Ã¥ï¿½â€“Ã©Æ’Â¨Ã©â€”Â¨Ã¥â€˜ËœÃ¥Â·Â¥Ã¤Â¿Â¡Ã¦ï¿½Â¯

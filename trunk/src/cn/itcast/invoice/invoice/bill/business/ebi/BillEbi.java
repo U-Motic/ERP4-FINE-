@@ -21,8 +21,13 @@ public interface BillEbi {
 	 * @return
 	 */
 	public List<Object[]> getBillByGoods(BillQueryModel bqm);
-
-	public List<OrderDetailModel> getBillDetailByGoods(BillQueryModel bqm);
+	
+	/**
+	 * this method returns a list
+	 * @param bqm
+	 * @return
+	 */
+	 public List<OrderDetailModel> getBillDetailByGoods(BillQueryModel bqm);
 
 	/**
 	 * this method gives you the bill for pie

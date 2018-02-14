@@ -62,8 +62,22 @@ public interface OrderEbi extends BaseEbi<OrderModel> {
 	 * @param om
 	 */
 	public void assignTask(OrderModel om);
+	
+	/**
+	 * this methdo returns a list
+	 * @param oqm
+	 * @param pageNum
+	 * @param pageCount
+	 * @param login
+	 * @return
+	 */
 	public List<OrderModel> getAllByCompleter(OrderQueryModel oqm,
 			Integer pageNum, Integer pageCount, EmpModel login);
+	
+	/**
+	 * this method ends a task
+	 * @param uuid
+	 */
 	public void endTask(Long uuid);
 	/**
 	 * èŽ·å�–æ‰€æœ‰æœªå®Œå…¨å…¥åº“çš„è®¢å�•ä¿¡æ�¯

@@ -27,5 +27,11 @@ public interface EmpDao extends BaseDao<EmpModel> {
 	public boolean updatePwdByUserNameAndPwd(String userName, String oldPwd,
 			String newPwd);
 
+	
+	/**
+	 * this method returns a list
+	 * @param depUuid
+	 * @return
+	 */
 	public List<EmpModel> getAllByDepUuid(Long depUuid);
 }
