@@ -139,21 +139,7 @@ public class BillEbo implements BillEbi{
 		ExcelUtil.sMerge(s, two , two , two , four);
 		ExcelUtil.sMerge(s, three , two , three , five);		
 	}
-	
-	private void funz2(List<Object[]> billList) {
-		final String per="ÃƒÂ¥Ã‚Â®Ã¢â‚¬Â¹ÃƒÂ¤Ã‚Â½Ã¢â‚¬Å“";
-		Label lab22 = ExcelUtil.cLabel(two, two, per);
-		ExcelUtil.sLabelStyle(lab22, per, twentyfour, Colour.BLACK, Colour.LIGHT_BLUE, one, "2020");
-		WritableSheet s = null;
-		ExcelUtil.aLabelToSheet(lab22, s);
-		//ÃƒÂ¤Ã‚Â¸Ã¯Â¿Â½ÃƒÂ©Ã¢â€žÂ¢Ã¯Â¿Â½
-		Label lab25 = ExcelUtil.cLabel(two, five, per);
-		ExcelUtil.sLabelStyle(lab25, per, twelve, Colour.BLACK, Colour.LIGHT_BLUE, one, "2002");
-		ExcelUtil.aLabelToSheet(lab25, s);
-		Label lab32 = ExcelUtil.cLabel(three, two, "");
-		ExcelUtil.sLabelStyle(lab32, per, one, Colour.BLACK, Colour.GRAY_25, one, "2022");
-		ExcelUtil.aLabelToSheet(lab32, s);		
-	}
+
 	
 	
 	
