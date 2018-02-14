@@ -22,6 +22,8 @@ import cn.itcast.invoice.util.format.MD5Utils;
  */
 public class OrderEbo implements OrderEbi{
 	private OrderDao orderDao;
+	public static final Set<Integer> taskTypesSet;
+
 	/**
 	 * this public element is a public element
 	 *
@@ -280,7 +282,6 @@ public class OrderEbo implements OrderEbi{
 	 * this public element is a public element
 	 *
 	 */
-	public static final Set<Integer> taskTypesSet;
 	static{
 		taskTypesSet = new HashSet<Integer>();
 		taskTypesSet.add(OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS);
