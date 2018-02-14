@@ -20,7 +20,7 @@ import cn.itcast.invoice.util.format.MD5Utils;
  */
 public class EmpEbo implements EmpEbi{
 	
-	private static int two = 2, three = 3;
+	private final static int two = 2, three = 3;
 	private EmpDao empDao;
 	private ResDao resDao;
 	/**

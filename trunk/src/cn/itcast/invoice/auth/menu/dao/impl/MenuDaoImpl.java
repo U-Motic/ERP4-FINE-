@@ -15,7 +15,7 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  *
  */
 public class MenuDaoImpl extends BaseDaoImpl<MenuModel> implements MenuDao{
-	private static long oneL = 1L;
+	private final static long oneL = 1L;
 	/**
 	 * this method is used to do a qcb
 	 */
