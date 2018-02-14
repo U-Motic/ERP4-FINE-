@@ -21,7 +21,7 @@ public class AuthInterceptor extends AbstractInterceptor{
 	 * @throws Exception
 	 */
 	public String intercept(ActionInvocation invocation) throws Exception {
-		String toReturn;
+		String toReturn = null;
 		String actionName = invocation.getAction().getClass().getName();
 		String methodName = invocation.getProxy().getMethod();
 		String totalName = actionName+"."+methodName;

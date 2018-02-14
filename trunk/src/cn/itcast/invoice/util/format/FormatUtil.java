@@ -15,7 +15,7 @@ public class FormatUtil {
 	 * @return
 	 */
 	public static String formatDate(Long time){
-		String toReturn;
+		String toReturn = null;
 		if(time == null) {
 			toReturn = "-";
 			}else {
@@ -33,7 +33,7 @@ public class FormatUtil {
 	 * @return
 	 */
 	public static String formatTime(Long time){
-		String toReturn;
+		String toReturn= null;
 		if(time == null) {
 			toReturn = "-";
 			}else {
@@ -51,7 +51,7 @@ public class FormatUtil {
 	 * @return
 	 */
 	public static String formatDateTime(Long time){
-		String toReturn;
+		String toReturn = null;
 		if(time == null) {
 			toReturn = "-";
 			}else {
