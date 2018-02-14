@@ -20,6 +20,12 @@ public interface ResEbi extends BaseEbi<ResModel> {
 	 */
 	public void save(ResModel rm, Long[] roleUuids);
 
+	
+	/**
+	 * this method updates
+	 * @param rm
+	 * @param roleUuids
+	 */
 	public void update(ResModel rm, Long[] roleUuids);
 	/**
 	 * èŽ·å�–æŒ‡å®šå‘˜å·¥çš„æ‰€æœ‰å�¯æ“�ä½œèµ„æº�ä¿¡æ�¯
@@ -28,5 +34,9 @@ public interface ResEbi extends BaseEbi<ResModel> {
 	 */
 	public List<String> getAllResByEmp(Long uuid);
 
+	/**
+	 * this method returns a list
+	 * @return
+	 */
 	public List<String> getAllUrl();
 }
