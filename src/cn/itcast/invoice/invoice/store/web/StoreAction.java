@@ -22,7 +22,27 @@ public class StoreAction extends BaseAction{
 	public StoreModel sm = new StoreModel();
 	private boolean msg;
 	private boolean has;
-
+	/**
+	 * this public element is a public element
+	 *
+	 */
+	public Long goodsUuid;
+	/**
+	 * this public element is a public element
+	 *
+	 */
+	public Integer num;
+	/**
+	 * this public element is a public element
+	 *
+	 */
+	public Long storeUuid;
+	/**
+	 * this public element is a public element
+	 *
+	 */
+	public Long odmUuid;
+	private OrderDetailModel odm;
 
 	/**
 	 * this public element is a public element
@@ -107,27 +127,7 @@ public class StoreAction extends BaseAction{
 		return TO_LIST;
 	}
 	
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public Long goodsUuid;
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public Integer num;
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public Long storeUuid;
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public Long odmUuid;
-	private OrderDetailModel odm;
+	
 	/**
 	 * this public element is a public element
 	 *
