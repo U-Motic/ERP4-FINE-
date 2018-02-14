@@ -35,7 +35,7 @@ import cn.itcast.invoice.util.jxl.ExcelUtil;
  */
 public class BillEbo implements BillEbi{
 	
-	private static int twenty = 20;
+	private final static int twenty = 20;
 	
 	
 	private final static int fourteen = 14, twelve = 12, ten = 10, fourfivesix = 456, threesixO = 360, one = 1, two = 2, three = 3, four = 4, five = 5, 
