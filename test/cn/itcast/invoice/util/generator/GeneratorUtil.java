@@ -4,8 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 /**
  * this class is a util generator
  *
@@ -417,15 +415,7 @@ public class GeneratorUtil {
 		funzio6(bw);
 	}
 	
-	private void funzio4(BufferedWriter bw) throws IOException{
-		bw.write(per);
-		bw.newLine();
-		bw.write(rep);
-		bw.newLine();
-		bw.write("		}");
-		bw.newLine();	
-		funzio5(bw);
-	}
+	
 	
 	public void funzio8(BufferedWriter bw) throws IOException {
 		bw.newLine();

@@ -16,7 +16,6 @@ import cn.itcast.invoice.invoice.order.vo.OrderDetailModel;
 import cn.itcast.invoice.invoice.order.vo.OrderModel;
 import cn.itcast.invoice.invoice.order.vo.OrderQueryModel;
 import cn.itcast.invoice.invoice.store.business.ebi.StoreEbi;
-import cn.itcast.invoice.invoice.store.vo.StoreModel;
 import cn.itcast.invoice.invoice.supplier.business.ebi.SupplierEbi;
 import cn.itcast.invoice.invoice.supplier.vo.SupplierModel;
 import cn.itcast.invoice.util.base.BaseAction;
