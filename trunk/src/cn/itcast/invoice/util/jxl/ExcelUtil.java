@@ -1,4 +1,4 @@
-﻿package cn.itcast.invoice.util.jxl;
+﻿﻿package cn.itcast.invoice.util.jxl;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -23,28 +23,17 @@ import jxl.write.WriteException;
  */
 public class ExcelUtil {
 	private static Map<Integer, Alignment> alignMap;
-	static{
-		alignMap = new HashMap<Integer, Alignment>();
-		alignMap.put(0, Alignment.LEFT);
-		alignMap.put(1, Alignment.CENTRE);
-		Integer two = 2;
-		alignMap.put(two , Alignment.RIGHT);
-	}
 	/**
 	 * 创建Excel文件流
 	 * @return 
 	 */
 	public static WritableWorkbook cWorkbook(OutputStream os){
-		WritableWorkbook toReturn = null;
 		try {
-			toReturn = Workbook.createWorkbook(os);
+			return Workbook.createWorkbook(os);
 		} catch (IOException e) {
-			 System.out.println("Something was wrong");
-			toReturn = null;
+			System.out.print("Exc");
+			return null;
 		} 
-		finally {
-			return toReturn;
-		}
 	}
 	
 	/**
@@ -78,7 +67,7 @@ public class ExcelUtil {
 		try {
 			s.addCell(l);
 		} catch (Exception e) {
-			 System.out.println("Something was wrong");
+			System.out.print("exc");
 		} 
 	}
 	
@@ -123,7 +112,14 @@ public class ExcelUtil {
 		}
 	}
 	
-
+	
+	static{
+		alignMap = new HashMap<Integer, Alignment>();
+		alignMap.put(0, Alignment.LEFT);
+		alignMap.put(1, Alignment.CENTRE);
+		Integer two = 2;
+		alignMap.put(two , Alignment.RIGHT);
+	}
 	
 	private static WritableCellFormat setBorderTop(char value, WritableCellFormat wcf) throws WriteException {
 		if(value == '1'){
@@ -177,8 +173,8 @@ public class ExcelUtil {
 			int align,String borderStyle){
 		
 		try {
-			if(colour == null) {colour = Colour.BLACK;}
-			if(bgColour == null) {bgColour = Colour.WHITE;}
+			if(colour == null) colour = Colour.BLACK;
+			if(bgColour == null) bgColour = Colour.WHITE;
 			WritableFont wf = new WritableFont(
 					//Imposta il carattere
 					WritableFont.createFont(fontName), 

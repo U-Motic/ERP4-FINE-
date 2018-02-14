@@ -3,6 +3,7 @@ package cn.itcast.invoice.util.generator;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 /**
@@ -10,21 +11,24 @@ import java.lang.reflect.Modifier;
  *
  */
 public class GeneratorUtil {
-	
-	
-	
+	final String rep="import pkg+.vo. +big+ QueryModel;";
+	final String per="	}";
+	final String exc="I/O Exception";
+	final String file="File Not Found";
+	final String qwe1="		<property name=sessionFactorb ref= sessionFactory />";
+	final String qwe2=	"<bean id=small Ebiclass=+pkg.business.ebo+big+Ebo\">;";
+	final String qwe3="	<bean id=\\\"\"+small+\"Dao\\\" class=\\\"\"+pkg+\".dao.impl.\"+big+\"DaoImpl\\\">\";";
+	final String qwe4="		<property name=\\\"\"+small+\"Dao\\\" ref=\\\"\"+small+\"Dao\\\"/>";
+	final String qwe5="\"	</bean>\"";
+	final String qwe6="\"	<bean id=\\\"\"+small+\"Action\\\" class=\\\"\"+pkg+\".web.\"+big+\"Action\\\" scope=\\\"prototype\\\">\"";
+			
 	private Class clazz;
 	private String pkg;
 	private String rootDir;
 	private String big;
 	private String small;
 	private String little;
-	
-	/**
-	 * 
-	 * @param clazz
-	 * @throws Exception
-	 */
+
 	public GeneratorUtil(Class clazz)throws Exception{
 		this.clazz = clazz;
 		//-1.Ã¦â€¢Â°Ã¦ï¿½Â®Ã¥Ë†ï¿½Ã¥Â§â€¹Ã¥Å’â€“
@@ -50,93 +54,89 @@ public class GeneratorUtil {
 		//9.Ã§â€�Å¸Ã¦Ë†ï¿½struts.xml
 	}
 	
+	
+	private void fun3(BufferedWriter bw) throws IOException {
+		
+		bw.newLine();
+		bw.write(qwe1);
+		bw.newLine();
+		bw.write("");
+		bw.newLine();
+		bw.write(qwe5);
+		bw.newLine();
+		bw.flush();
+	
+		
+	}
+	
+	
+	private void fun2(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.write("");
+		bw.newLine();
+		bw.write("");
+		bw.newLine();
+		bw.write(qwe5);
+		bw.newLine();
+		bw.write(qwe3);
+		bw.newLine();
+		bw.write(qwe4);
+		fun3(bw);
+	}
+	
+	private void fun4(BufferedWriter bw) throws IOException {
+		bw.write(qwe2);
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		bw.write("");
+		bw.newLine();
+		bw.write(qwe3);
+		bw.newLine();
+		bw.write(qwe4);
+		bw.newLine();
+		bw.write(qwe5);
+		fun2(bw);
+	}
+	
+	private void fun1(BufferedWriter bw) throws IOException {
+		bw.write(qwe2);
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		bw.write("");
+		bw.newLine();
+		bw.write(qwe3);
+		bw.newLine();
+		bw.write(qwe4);
+		bw.newLine();
+		bw.write(qwe5);
+		fun2(bw);
+	}
+	
 	//8.Ã§â€�Å¸Ã¦Ë†ï¿½applicationContext.xml
-	/**
-	 * 
-	 * @throws Exception
-	 */
 	private void generatorApplicationContextXml() throws Exception{
 		//1.Ã¥Ë†â€ºÃ¥Â»ÂºÃ¦â€“â€¡Ã¤Â»Â¶
 		File f = null;
 		BufferedWriter bw= null;
+		bw = new BufferedWriter(new FileWriter(f));
 		try {
 		f = new File("resources/applicationContext-"+small+".xml");
 		if(f.exists()){
 			return;
 		}
 		f.createNewFile();
-		bw = new BufferedWriter(new FileWriter(f));
-		bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-		bw.newLine();
-
-		bw.write("<beans xmlns=\"http://www.springframework.org/schema/beans\"");
-		bw.newLine();
-
-		bw.write("	xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
-		bw.newLine();
-		
-		bw.write("	xsi:schemaLocation=\"");
-		bw.newLine();
-		
-		bw.write("		http://www.springframework.org/schema/beans");
-		bw.newLine();
-		
-		bw.write("		http://www.springframework.org/schema/beans/spring-beans.xsd");
-		bw.newLine();
-		
-		bw.write("		\">  ");
-		bw.newLine();
-		
-		bw.write("	<!-- Action -->");
-		bw.newLine();
-		
-		bw.write("	<bean id=\""+small+"Action\" class=\""+pkg+".web."+big+"Action\" scope=\"prototype\">");
-		bw.newLine();
-		
-		bw.write("		<property name=\""+small+"Ebi\" ref=\""+small+"Ebi\"/>");
-		bw.newLine();
-		
-		bw.write("	</bean>");
-		bw.newLine();
-		
-		bw.write("	<!-- Ebi -->");
-		bw.newLine();
-		
-		bw.write("	<bean id=\""+small+"Ebi\" class=\""+pkg+".business.ebo."+big+"Ebo\">");
-		bw.newLine();
-		
-		bw.write("		<property name=\""+small+"Dao\" ref=\""+small+"Dao\"/>");
-		bw.newLine();
-		
-		bw.write("	</bean>");
-		bw.newLine();
-		
-		bw.write("	<!-- Dao -->");
-		bw.newLine();
-		
-		bw.write("	<bean id=\""+small+"Dao\" class=\""+pkg+".dao.impl."+big+"DaoImpl\">");
-		bw.newLine();
-		
-		bw.write("		<property name=\"sessionFactory\" ref=\"sessionFactory\"/>");
-		bw.newLine();
-		
-		bw.write("	</bean>");
-		bw.newLine();
-		
-		bw.write("</beans>");
-		bw.newLine();
-		
-		bw.flush();
+		fun1(bw);
 		}
 		catch (java.io.FileNotFoundException e1) {
-            System.out.println("File not found");
+           
           } 
 		 finally {
 	           if (bw != null) {
 	             try {
 	               bw.close(); // OK
 	             } catch (java.io.IOException e3) {
-	               System.out.println("I/O Exception");
+	               
 	             }
 	           }
 	         }
@@ -145,8 +145,113 @@ public class GeneratorUtil {
 		
 	}
 	//7.Ã§â€�Å¸Ã¦Ë†ï¿½Action
+	
+	
+	
+	
+	private void funz1(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.write("import cn.itcast.invoice.util.base.BaseAction;");
+		bw.newLine();
+		bw.newLine();
+		funz3(bw);
+	}
+	
+	private void funz2() {
+			
+	}
+	
+	private void funz3(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.write("");
+		bw.newLine();
+		bw.write("");
+		bw.newLine();
+		bw.write(qwe5);
+		bw.newLine();
+		bw.write(qwe3);
+		bw.newLine();
+		bw.write("	//Ã¨Â·Â³Ã¨Â½Â¬Ã¥Ë†Â°Ã¥Ë†â€”Ã¨Â¡Â¨Ã©Â¡ÂµÃ©ï¿½Â¢");
+		bw.newLine();
+		bw.write("	public String list(){");
+		bw.newLine();
+		funz4(bw);
+	}
+	
+	public void funz5(BufferedWriter bw) throws IOException {
+
+		bw.newLine();
+		bw.write(qwe3);
+		bw.newLine();
+		bw.write("	//Ã¨Â·Â³Ã¨Â½Â¬Ã¥Ë†Â°Ã¥Ë†");
+		bw.newLine();
+		bw.write("	public String save(){");
+		bw.newLine();
+		funz6(bw);
+	}
+	
+	private void funz4(BufferedWriter bw) throws IOException{
+		bw.write(per);
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.write("		}");
+		bw.newLine();
+		bw.write("		return TO_LIST;");
+		bw.newLine();	
+		funz5(bw);
+	}
+	
+	public void funz8(BufferedWriter bw) throws IOException {
+		bw.write(qwe1);
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		bw.write(qwe4);
+		bw.newLine();
+		bw.write(qwe5);
+		bw.newLine();
+		bw.write(qwe3);
+		bw.newLine();
+		funz7(bw);
+	}
+	
+	public void funz7(BufferedWriter bw) throws IOException {
+		bw.write(qwe1);
+		bw.newLine();
+		bw.write("		return INPUT;");
+		bw.newLine();
+		bw.write(qwe1);
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		
+	}
+	
+	public void funz6(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write("		return TO_LIST;");
+		bw.newLine();
+		bw.write("	}");
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.flush();
+		
+	}
+	
 	/**
-	 * 
 	 * @throws Exception
 	 */
 	private void generatorAction() throws Exception{
@@ -159,172 +264,126 @@ public class GeneratorUtil {
 			return;
 		}
 		f.createNewFile();
-		
 		bw = new BufferedWriter(new FileWriter(f));
-		
-		bw.write("package "+pkg+".web;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("import java.util.List;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("import "+pkg+".business.ebi."+big+"Ebi;");
-		bw.newLine();
-		
-		bw.write("import "+pkg+".vo."+big+"Model;");
-		bw.newLine();
-		
-		bw.write("import "+pkg+".vo."+big+"QueryModel;");
-		bw.newLine();
-		
-		bw.write("import cn.itcast.invoice.util.base.BaseAction;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("public class "+big+"Action extends BaseAction{");
-		bw.newLine();
-		
-		bw.write("	public "+big+"Model "+little+"m = new "+big+"Model();");
-		bw.newLine();
-		
-		bw.write("	public "+big+"QueryModel "+little+"qm = new "+big+"QueryModel();");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	private "+big+"Ebi "+small+"Ebi;");
-		bw.newLine();
-		
-		bw.write("	public void set"+big+"Ebi("+big+"Ebi "+small+"Ebi) {");
-		bw.newLine();
-		
-		bw.write("		this."+small+"Ebi = "+small+"Ebi;");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	//Ã¨Â·Â³Ã¨Â½Â¬Ã¥Ë†Â°Ã¥Ë†â€”Ã¨Â¡Â¨Ã©Â¡ÂµÃ©ï¿½Â¢");
-		bw.newLine();
-		
-		bw.write("	public String list(){");
-		bw.newLine();
-		
-		bw.write("		setDataTotal("+small+"Ebi.getCount("+little+"qm));");
-		bw.newLine();
-		
-		bw.write("		List<"+big+"Model> "+small+"List = "+small+"Ebi.getAll("+little+"qm,pageNum,pageCount);");
-		bw.newLine();
-		
-		bw.write("		put(\""+small+"List\","+small+"List);");
-		bw.newLine();
-		
-		bw.write("		return LIST;");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	//Ã¤Â¿ï¿½Ã¥Â­Ëœ/Ã¤Â¿Â®Ã¦â€�Â¹");
-		bw.newLine();
-		
-		bw.write("	public String save(){");
-		bw.newLine();
-		
-		bw.write("		if("+little+"m.getUuid()== null){");
-		bw.newLine();
-		
-		bw.write("			"+small+"Ebi.save("+little+"m);");
-		bw.newLine();
-		
-		bw.write("		}else{");
-		bw.newLine();
-		
-		bw.write("			"+small+"Ebi.update("+little+"m);");
-		bw.newLine();
-		
-		bw.write("		}");
-		bw.newLine();
-		
-		bw.write("		return TO_LIST;");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	//Ã¨Â·Â³Ã¨Â½Â¬Ã¥Ë†Â°Ã¦Â·Â»Ã¥Å Â /Ã¤Â¿Â®Ã¦â€�Â¹Ã©Â¡ÂµÃ©ï¿½Â¢");
-		bw.newLine();
-		
-		bw.write("	public String input(){");
-		bw.newLine();
-		
-		bw.write("		if("+little+"m.getUuid()!=null){");
-		bw.newLine();
-		
-		bw.write("			"+little+"m = "+small+"Ebi.get("+little+"m.getUuid());");
-		bw.newLine();
-		
-		bw.write("		}");
-		bw.newLine();
-		
-		bw.write("		return INPUT;");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	//Ã¥Ë†Â Ã©â„¢Â¤");
-		bw.newLine();
-		
-		bw.write("	public String delete(){");
-		bw.newLine();
-		
-		bw.write("		"+small+"Ebi.delete("+little+"m);");
-		bw.newLine();
-		
-		bw.write("		return TO_LIST;");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("}");
-		bw.newLine();
-
-		bw.flush();
+		funz1(bw);
 		}
 		catch (java.io.FileNotFoundException e1) {
-            System.out.println("File not found");
+			final String exc=file;
+            System.out.println(exc);
           } 
 		 finally {
 	           if (bw != null) {
 	             try {
 	               bw.close(); // OK
 	             } catch (java.io.IOException e3) {
-	               System.out.println("I/O Exception");
+			       System.out.println(exc);
 	             }
 	           }
 	         }
 	}
 	//6.Ã§â€�Å¸Ã¦Ë†ï¿½Ebo
+	
+	
+	
+	private void funzi1(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.write("import cn.itcast.invoice.util.base.BaseAction;");
+		bw.newLine();
+		bw.newLine();
+		funzi3(bw);
+	}
+	
+
+	private void funzi3(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe1);
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		bw.write(qwe4);
+		bw.newLine();
+		bw.write(qwe5);
+		bw.newLine();
+		bw.write(qwe3);
+		bw.write("	public String list(){");
+		bw.newLine();
+		funzi4(bw);
+	}
+	
+	public void funzi5(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.write(qwe1);
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		bw.write(qwe4);
+		bw.newLine();
+		bw.write(qwe5);
+		bw.newLine();
+		funzi6(bw);
+	}
+	
+	private void funzi4(BufferedWriter bw) throws IOException{
+		bw.write(per);
+		bw.newLine();
+		bw.write(rep);
+		bw.write(qwe1);
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		funzi5(bw);
+	}
+	
+	public void funzi8(BufferedWriter bw) throws IOException {
+		bw.write("	}");
+		bw.newLine();
+		bw.write(qwe1);
+		bw.newLine();
+		bw.newLine();
+
+		bw.newLine();
+		bw.write(qwe3);
+		funzi7(bw);
+	}
+	
+	public void funzi7(BufferedWriter bw) throws IOException {
+		bw.write("		}");
+		bw.newLine();
+		bw.write("		return INPUT;");
+		bw.write(qwe1);
+		bw.newLine();
+		bw.newLine();
+		funzi8(bw);
+	}
+	
+	public void funzi6(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.write("	}");
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.flush();
+		
+	}
+	
 	/**
+
 	 * 
+
 	 * @throws Exception
+
 	 */
 	private void generatorEbo() throws Exception{
 		File f = null;
@@ -335,156 +394,125 @@ public class GeneratorUtil {
 			return;
 		}
 		f.createNewFile();
-		
 		bw = new BufferedWriter(new FileWriter(f));
-		
-		bw.write("package "+pkg+".business.ebo;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("import java.io.Serializable;");
-		bw.newLine();
-		
-		bw.write("import java.util.List;");
-		bw.newLine();
-
-		bw.newLine();
-		
-		bw.write("import "+pkg+".business.ebi."+big+"Ebi;");
-		bw.newLine();
-		
-		bw.write("import "+pkg+".dao.dao."+big+"Dao;");
-		bw.newLine();
-		
-		bw.write("import "+pkg+".vo."+big+"Model;");
-		bw.newLine();
-		
-		bw.write("import cn.itcast.invoice.util.base.BaseQueryModel;");
-		bw.newLine();
-		
-		bw.write("import cn.itcast.invoice.util.exception.AppException;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("public class "+big+"Ebo implements "+big+"Ebi{");
-		bw.newLine();
-		
-		bw.write("	private "+big+"Dao "+small+"Dao;");
-		bw.newLine();
-		
-		bw.write("	public void set"+big+"Dao("+big+"Dao "+small+"Dao) {");
-		bw.newLine();
-		
-		bw.write("		this."+small+"Dao = "+small+"Dao;");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	public void save("+big+"Model "+little+"m) {");
-		bw.newLine();
-		
-		bw.write("		"+small+"Dao.save("+little+"m);");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	public void delete("+big+"Model "+little+"m) {");
-		bw.newLine();
-		
-		bw.write("		"+small+"Dao.delete("+little+"m);");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	public void update("+big+"Model "+little+"m) {");
-		bw.newLine();
-		
-		bw.write("		"+small+"Dao.update("+little+"m);");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	public "+big+"Model get(Serializable uuid) {");
-		bw.newLine();
-		
-		bw.write("		return "+small+"Dao.get(uuid);");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-
-		bw.write("	public List<"+big+"Model> getAll() {");
-		bw.newLine();
-		
-		bw.write("		return "+small+"Dao.getAll();");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	public List<"+big+"Model> getAll(BaseQueryModel qm, Integer pageNum,Integer pageCount) {");
-		bw.newLine();
-		
-		bw.write("		return "+small+"Dao.getAll(qm,pageNum,pageCount);");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("	public Integer getCount(BaseQueryModel qm) {");
-		bw.newLine();
-		
-		bw.write("		return "+small+"Dao.getCount(qm);");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("}");
-		bw.newLine();
-		
-		bw.flush();
+		funzi1(bw);
 		}
 		catch (java.io.FileNotFoundException e1) {
-            System.out.println("File not found");
+            System.out.println(file);
           } 
 		 finally {
 	           if (bw != null) {
 	             try {
 	               bw.close(); // OK
 	             } catch (java.io.IOException e3) {
-	               System.out.println("I/O Exception");
+			       System.out.println(exc);
 	             }
 	           }
 	         }
 
 	}
 	//5.Ã§â€�Å¸Ã¦Ë†ï¿½Ebi
+	
+	
+	private void funzio1(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe4);
+		bw.write(per);
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		bw.write(qwe4);
+		funzio3(bw);
+	}
+	
+	
+	
+	private void funzio3(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe4);
+		bw.write(qwe4);
+		bw.write(per);
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		funzio3(bw);
+		
+	}
+	
+	public void funzio5(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe2);
+		bw.write(qwe4);
+		bw.write(per);
+		bw.write(qwe6);
+		bw.write(per);
+		bw.newLine();
+		bw.write(qwe6);;
+		bw.write("	public String save(){");
+		bw.newLine();
+		funzio6(bw);
+	}
+	
+	private void funzio4(BufferedWriter bw) throws IOException{
+		bw.write(per);
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.write("		}");
+		bw.newLine();	
+		funzio5(bw);
+	}
+	
+	public void funzio8(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe4);
+		bw.write(per);
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		bw.write(qwe4);
+		funzio3(bw);
+		bw.write("			"+little+"m = "+small+"Ebi.get("+little+"m.getUuid());");
+		bw.newLine();
+		funzio7(bw);
+	}
+	
+	public void funzio7(BufferedWriter bw) throws IOException {
+		bw.write("		}");
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe6);
+		bw.newLine();
+		bw.write(qwe4);
+		funzio3(bw);
+		bw.newLine();
+		bw.write("		List<"+big+"Model> "+small+"List = "+small+"Ebi.getAll("+little+"qm,pageNum,pageCount);");
+		funzio8(bw);
+	}
+	
+	public void funzio6(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe5);
+		bw.newLine();
+		bw.write("	}");
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.flush();
+		
+	}
+	
 	/**
+
 	 * 
+
 	 * @throws Exception
+
 	 */
 	private void generatorEbi() throws Exception{
 		//1.Ã¥Ë†â€ºÃ¥Â»ÂºÃ¦â€“â€¡Ã¤Â»Â¶
@@ -496,58 +524,186 @@ public class GeneratorUtil {
 			return;
 		}
 		f.createNewFile();
-		
 		bw = new BufferedWriter(new FileWriter(f));
-		
-		bw.write("package "+pkg+".business.ebi;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("import org.springframework.transaction.annotation.Transactional;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("import "+pkg+".vo."+big+"Model;");
-		bw.newLine();
-		
-		bw.write("import cn.itcast.invoice.util.base.BaseEbi;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("@Transactional");
-		bw.newLine();
-		
-		bw.write("public interface "+big+"Ebi extends BaseEbi<"+big+"Model> {");
-		bw.newLine();
-		
-		bw.write("}");
-		bw.newLine();
-		
-		bw.flush();
+		funzio1(bw);
 		}
 		catch (java.io.FileNotFoundException e1) {
-            System.out.println("File not found");
+            System.out.println(file);
           } 
 		 finally {
 	           if (bw != null) {
 	             try {
 	               bw.close(); // OK
 	             } catch (java.io.IOException e3) {
-	               System.out.println("I/O Exception");
+	               System.out.println(exc);
 	             }
 	           }
 	         }
 		
 	}
+	
+	
+	/**
+
+	 * 
+
+	 * @throws Exception
+
+	 */
+	private void funzion1(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.write(per);
+		bw.newLine();
+		bw.write(qwe3);
+		bw.newLine();
+		bw.write(qwe6);
+		funzion3(bw);
+	}
+	
+	/**
+
+	 * 
+
+	 * @throws Exception
+
+	 */
+	private void funzion3(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.write(qwe6);
+		funzion3(bw);
+		bw.write("	public String list(){");
+		bw.newLine();
+		funzio4(bw);
+	}
+	
+	
+	/**
+
+	 * 
+
+	 * @throws Exception
+
+	 */
+	public void funzion5(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.write(per);
+		bw.newLine();
+		bw.write(qwe3);
+		bw.newLine();
+		funzio6(bw);
+	}
+	
+	
+	/**
+
+	 * 
+
+	 * @throws Exception
+
+	 */
+	private void funzion4(BufferedWriter bw) throws IOException{
+		bw.write(per);
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.write("		}");
+		bw.newLine();
+		bw.write(qwe5);
+		bw.newLine();	
+		funzio5(bw);
+	}
+	
+	
+	
+	/**
+
+	 * 
+
+	 * @throws Exception
+
+	 */
+	public void funzion8(BufferedWriter bw) throws IOException {
+		bw.write("	}");
+		bw.newLine();
+		bw.newLine();
+		bw.write(rep);
+		bw.write(per);
+		bw.newLine();
+		bw.write(qwe3);
+		bw.newLine();
+		funzion7(bw);
+	}
+	
+	
+	
+	/**
+
+	 * 
+
+	 * @throws Exception
+
+	 */
+public void funzion7(BufferedWriter bw) throws IOException {
+		bw.write("		}");
+		bw.newLine();
+		bw.write("		return INPUT;");
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.write(per);
+		bw.newLine();
+		bw.write(qwe3);
+		bw.newLine();funzion8(bw);
+	}
+	
+
+
+/**
+
+ * 
+
+ * @throws Exception
+
+ */	public void funzion6(BufferedWriter bw) throws IOException {
+		bw.newLine();
+		bw.newLine();
+		bw.write(rep);
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.write(per);
+		bw.newLine();
+		bw.newLine();
+		bw.flush();
+		
+	}
+	
+	
 	//4.Ã§â€�Å¸Ã¦Ë†ï¿½DaoImpl
 	/**
+
 	 * 
+
 	 * @throws Exception
-	 */
-	private void generatorDaoImpl() throws Exception{
+
+	 */	
+ private void generatorDaoImpl() throws Exception{
 		//1.Ã¥Ë†â€ºÃ¥Â»ÂºÃ¦â€“â€¡Ã¤Â»Â¶
 		File f = null;
 		BufferedWriter bw= null;
@@ -557,68 +713,20 @@ public class GeneratorUtil {
 			return;
 		}
 		f.createNewFile();
-		
+	
 		bw = new BufferedWriter(new FileWriter(f));
+		funzion1(bw);
 		
-		bw.write("package "+pkg+".dao.impl;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("import org.hibernate.criterion.DetachedCriteria;");
-		bw.newLine();
-		
-		bw.write("import org.hibernate.criterion.Restrictions;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("import "+pkg+".dao.dao."+big+"Dao;");
-		bw.newLine();
-		
-		bw.write("import "+pkg+".vo."+big+"Model;");
-		bw.newLine();
-		
-		bw.write("import "+pkg+".vo."+big+"QueryModel;");
-		bw.newLine();
-		
-		bw.write("import cn.itcast.invoice.util.base.BaseDaoImpl;");
-		bw.newLine();
-		
-		bw.write("import cn.itcast.invoice.util.base.BaseQueryModel;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("public class "+big+"DaoImpl extends BaseDaoImpl<"+big+"Model> implements "+big+"Dao{");
-		bw.newLine();
-		
-		bw.write("	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){");
-		bw.newLine();
-		
-		bw.write("		"+big+"QueryModel "+little+"qm = ("+big+"QueryModel) qm;");
-		bw.newLine();
-		
-		bw.write("		//TODO Ã¦Â·Â»Ã¥Å Â Ã¨â€¡ÂªÃ¥Â®Å¡Ã¤Â¹â€°Ã¦Å¸Â¥Ã¨Â¯Â¢Ã¨Â§â€žÃ¥Ë†â„¢");
-		bw.newLine();
-		
-		bw.write("	}");
-		bw.newLine();
-		
-		bw.write("}");
-		bw.newLine();
-		
-		bw.flush();
 		}
 		catch (java.io.FileNotFoundException e1) {
-            System.out.println("File not found");
+            System.out.println(file);
           } 
 		 finally {
 	           if (bw != null) {
 	             try {
 	               bw.close(); // OK
 	             } catch (java.io.IOException e3) {
-	               System.out.println("I/O Exception");
+	               System.out.println(exc);
 	             }
 	           }
 	         }
@@ -626,8 +734,11 @@ public class GeneratorUtil {
 	}
 	//3.Ã§â€�Å¸Ã¦Ë†ï¿½Dao
 	/**
+
 	 * 
+
 	 * @throws Exception
+
 	 */
 	private void generatorDao() throws Exception{
 		//1.Ã¥Ë†â€ºÃ¥Â»ÂºÃ¦â€“â€¡Ã¤Â»Â¶
@@ -639,32 +750,14 @@ public class GeneratorUtil {
 			return;
 		}
 		f.createNewFile();
-		
-		bw = new BufferedWriter(new FileWriter(f));
-		
-		bw.write("package "+pkg+".dao.dao;");
+		funz1(bw);
 		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("import "+pkg+".vo."+big+"Model;");
-		bw.newLine();
-		
-		bw.write("import cn.itcast.invoice.util.base.BaseDao;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("public interface "+big+"Dao extends BaseDao<"+big+"Model> {");
-		bw.newLine();
-		
 		bw.write("}");
 		bw.newLine();
-		
 		bw.flush();
 		}
 		catch (java.io.FileNotFoundException e1) {
-            System.out.println("File not found");
+            System.out.println(file);
           } 
 		 finally {
 	           if (bw != null) {
@@ -678,10 +771,34 @@ public class GeneratorUtil {
 		
 		
 	}
+	
+	/**
+
+	 * 
+
+	 * @throws Exception
+
+	 */
+	private void funx1(BufferedWriter bw) throws IOException {
+		bw.write(rep);
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();
+		bw.write(per);
+		bw.newLine();
+		bw.newLine();
+		bw.flush();
+		}
+	
+	
+	
 	//2.Ã§â€�Å¸Ã¦Ë†ï¿½Model.hbm.xml
 	/**
+
 	 * 
+
 	 * @throws Exception
+
 	 */
 	private void generatorHbmXml() throws Exception{
 		File f = null;
@@ -694,61 +811,19 @@ public class GeneratorUtil {
 		f.createNewFile();
 		
 		bw = new BufferedWriter(new FileWriter(f));
-		
-		bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-		bw.newLine();
-		
-		bw.write("<!DOCTYPE hibernate-mapping PUBLIC");
-		bw.newLine();
-		
-		bw.write("        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'");
-		bw.newLine();
-		
-		bw.write("        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("<hibernate-mapping>");
-		bw.newLine();
-		
-		bw.write("    <class name=\""+pkg+".vo."+big+"Model\" table=\"tbl_"+small+"\">");
-		bw.newLine();
-		
-		bw.write("        <id name=\"uuid\">");
-		bw.newLine();
-		
-		bw.write("            <generator class=\"native\" />");
-		bw.newLine();
-		
-		bw.write("        </id>");
-		bw.newLine();
-		//Ã¥Â¾ÂªÃ§Å½Â¯Ã§â€�Å¸Ã¦Ë†ï¿½
-		//Ã©Å“â‚¬Ã¨Â¦ï¿½Ã¨Å½Â·Ã¥ï¿½â€“Ã¦â€°â‚¬Ã¦Å“â€°Ã§Å¡â€žÃ¥Â­â€”Ã¦Â®ÂµÃ¥ï¿½ï¿½
-		Field[] fields = clazz.getDeclaredFields();
-		for(Field fd:fields){
-			//Ã¥Â¦â€šÃ¦Å¾Å“Ã¦ËœÂ¯Ã§Â§ï¿½Ã¦Å“â€°Ã§Å¡â€žÃ§â€�Å¸Ã¦Ë†ï¿½
-			if (check(fd)) {
-			bw.write("        <property name=\""+fd.getName()+"\"/>");
-			bw.newLine();}
+	
+		funzi1(bw);
 		}
 		
-		bw.write("    </class>");
-		bw.newLine();
-		
-		bw.write("</hibernate-mapping>");
-		
-		bw.flush();
-	}
 	catch (java.io.FileNotFoundException e1) {
-        System.out.println("File not found");
+        System.out.println(file);
       } 
 	 finally {
            if (bw != null) {
              try {
                bw.close(); // OK
              } catch (java.io.IOException e3) {
-               System.out.println("I/O Exception");
+               System.out.println(exc);
              }
            }
          }
@@ -756,10 +831,14 @@ public class GeneratorUtil {
 		
 	}
 
+
 	//1.Ã§â€�Å¸Ã¦Ë†ï¿½QueryModel
 	/**
+
 	 * 
+
 	 * @throws Exception
+
 	 */
 	private void generatorQueryModel() throws Exception {
 		//1.Ã¥Ë†â€ºÃ¥Â»ÂºÃ¦â€“â€¡Ã¤Â»Â¶
@@ -771,39 +850,18 @@ public class GeneratorUtil {
 			return;
 		}
 		f.createNewFile();
-		
 		bw = new BufferedWriter(new FileWriter(f));
-		
-		bw.write("package "+pkg+".vo;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("import cn.itcast.invoice.util.base.BaseQueryModel;");
-		bw.newLine();
-		
-		bw.newLine();
-		
-		bw.write("public class "+big+"QueryModel extends "+big+"Model implements BaseQueryModel{");
-		bw.newLine();
-		
-		bw.write("	//TODO Ã¨Â¯Â·Ã¦Â·Â»Ã¥Å Â Ã¨â€¡ÂªÃ¥Â®Å¡Ã¤Â¹â€°Ã¦Å¸Â¥Ã¨Â¯Â¢Ã¦ï¿½Â¡Ã¤Â»Â¶Ã¥Â­â€”Ã¦Â®Âµ");
-		bw.newLine();
-		
-		bw.write("}");
-		bw.newLine();
-		
-		bw.flush();
+		funzio1(bw);
 		}
 		catch (java.io.FileNotFoundException e1) {
-	        System.out.println("File not found");
+	        System.out.println(exc);
 	      } 
 		 finally {
 	           if (bw != null) {
 	             try {
 	               bw.close(); // OK
 	             } catch (java.io.IOException e3) {
-	               System.out.println("I/O Exception");
+	               System.out.println(exc);
 	             }
 	           }
 	         }
@@ -811,6 +869,13 @@ public class GeneratorUtil {
 	}
 
 	//0.Ã§â€�Å¸Ã¦Ë†ï¿½Ã¤Â¿ï¿½Ã¥Â­ËœÃ¦â€“â€¡Ã¤Â»Â¶Ã§Å¡â€žÃ§â€ºÂ®Ã¥Â½â€¢
+	/**
+
+	 * 
+
+	 * @throws Exception
+
+	 */
 	private void genderatorDirectories() {
 		//Ã¥Ë†â€ºÃ¥Â»ÂºÃ¦â€°â‚¬Ã¦Å“â€°Ã¦â€“â€¡Ã¤Â»Â¶Ã§Å¡â€žÃ¤Â¿ï¿½Ã¥Â­ËœÃ§â€ºÂ®Ã¥Â½â€¢
 		//web
@@ -821,6 +886,10 @@ public class GeneratorUtil {
 		f.mkdirs();
 		//business.ebo
 		f = new File(rootDir+"/business/ebo");
+		funzionez(f);
+	}
+	
+	private void funzionez(File f) {
 		f.mkdirs();
 		//dao.dao
 		f = new File(rootDir+"/dao/dao");
@@ -828,6 +897,7 @@ public class GeneratorUtil {
 		//dao.impl
 		f = new File(rootDir+"/dao/impl");
 		f.mkdirs();
+	
 	}
 	
 	//-1.Ã¦â€¢Â°Ã¦ï¿½Â®Ã¥Ë†ï¿½Ã¥Â§â€¹Ã¥Å’â€“

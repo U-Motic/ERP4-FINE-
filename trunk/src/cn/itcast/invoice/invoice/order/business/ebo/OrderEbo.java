@@ -31,10 +31,8 @@ public class OrderEbo implements OrderEbi{
 			OrderModel.ORDER_TYPE_OF_BUY_IN_STORE,
 			//ç¼ºå°‘1ç§�
 			};
-	/**
-	 * this method is used to set the order dao
-	 * @param orderDao
-	 */
+	private Integer[] nums;
+	private Double[] prices;
 	public void setOrderDao(OrderDao orderDao) {
 		this.orderDao = orderDao;
 	}
@@ -42,6 +40,7 @@ public class OrderEbo implements OrderEbi{
 	 * this public element is a public element
 	 *
 	 */
+	
 	public void save(OrderModel om) {
 		orderDao.save(om);
 	}
@@ -94,23 +93,37 @@ public class OrderEbo implements OrderEbi{
 		return orderDao.getCount(qm);
 	}
 	
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public void save(EmpModel em,OrderModel om, Long[] goodsUuids, Integer[] nums,Double[] prices) {
-		//å°†è®¢å�•ä¿¡æ�¯ç»„ç»‡å¥½ï¼Œä¿�å­˜
-		//omä¸­ä¿�å­˜æœ‰å¯¹åº”ä¾›åº”å•†çš„uuid
-		//è®¾ç½®è®¢å�•å�·:ç³»ç»Ÿæ—¶é—´+ç™»é™†äººuuid
+	
+	
+	private void funz(int i, Set<OrderDetailModel> odms, Long[] goodsUuids, GoodsModel gm, OrderDetailModel odm,Double totalPrice, OrderModel om,Integer totalNum, Double totalPrice1, OrderModel om1) {
+		Long goodsUuid = goodsUuids[i];
+		Integer num = nums[i];
+		Double price = prices[i];
+		
+		totalNum+=num;
+		totalPrice1+=num*price;
+		
+		
+		odm.setNum(num);
+		//è®¾ç½®è®¢å�•æ˜Žç»†ä¸­å½“å‰�è´§ç‰©å®Œæˆ�é‡�ä¸ºè®¢å�•å•†å“�è´§ç‰©æ€»é‡�
+		odm.setSurplus(num);
+		odm.setPrice(price);
+		
+		
+		gm.setSegreto(goodsUuid);
+		odm.setGm(gm);
+		//ç»‘å®šæ˜Žç»†åˆ°è®¢å�•çš„å…³ç³»
+		odm.setOm(om1);
+		odms.add(odm);
+	
+	}
+	
+	private void funz2(EmpModel em,OrderModel om, Long[] goodsUuids, Integer[] nums,Double[] prices) {
 		String orderNum = System.currentTimeMillis()+""+em.getUuid();
 		om.setOrderNum(MD5Utils.sha256(orderNum));
-		//è®¾ç½®è®¢å�•ç±»åˆ«
 		om.setOrderType(OrderModel.ORDER_ORDERTYPE_OF_BUY);
-		//è®¾ç½®è®¢å�•çŠ¶æ€�
 		om.setType(OrderModel.ORDER_TYPE_OF_BUY_NO_CHECK);
-		//è®¾ç½®è®¢å�•åˆ›å»ºæ—¶é—´ä¸ºå½“å‰�ç³»ç»Ÿæ—¶é—´
 		om.setCreateTime(System.currentTimeMillis());
-		//è®¾ç½®å½“å‰�ç™»é™†äººä¸ºåˆ¶å�•äºº
 		om.setCreater(em);
 		
 		Integer totalNum = 0;
@@ -118,39 +131,27 @@ public class OrderEbo implements OrderEbi{
 		OrderDetailModel odm = new OrderDetailModel();
 		GoodsModel gm = new GoodsModel();
 		//å°†è®¢å�•æ˜Žç»†ä¿¡æ�¯ç»„ç»‡åŒ…ï¼Œä¿�å­˜
+		
+	}
+	
+	/**
+	 * this public element is a public element
+	 *
+	 */
+	public void save(EmpModel em,OrderModel om, Long[] goodsUuids, Integer[] nums,Double[] prices) {
+		funz2(em,om,goodsUuids,nums,prices);
 		Set<OrderDetailModel> odms = new HashSet<OrderDetailModel>();
 		for(int i = 0;i<goodsUuids.length;i++){
-			Long goodsUuid = goodsUuids[i];
-			Integer num = nums[i];
-			Double price = prices[i];
-			
-			totalNum+=num;
-			totalPrice+=num*price;
-			
-			
-			odm.setNum(num);
-			//è®¾ç½®è®¢å�•æ˜Žç»†ä¸­å½“å‰�è´§ç‰©å®Œæˆ�é‡�ä¸ºè®¢å�•å•†å“�è´§ç‰©æ€»é‡�
-			odm.setSurplus(num);
-			odm.setPrice(price);
-			
-			
-			gm.setSegreto(goodsUuid);
-			odm.setGm(gm);
-			//ç»‘å®šæ˜Žç»†åˆ°è®¢å�•çš„å…³ç³»
-			odm.setOm(om);
-			odms.add(odm);
+		funz(i,odms,goodsUuids,null, null, null, om,i, null, om);
 		}
 		//è®¾ç½®æ‰€æœ‰çš„è®¢å�•æ˜Žç»†é›†å�ˆ
 		om.setOdms(odms);
 		//è®¾ç½®å•†å“�æ€»æ•°é‡�
-		om.setTotalNum(totalNum);
+		om.setTotalNum(nums[0]);
 		//è®¾ç½®è®¢å�•æ€»ä»·æ ¼
-		om.setTotalPrice(totalPrice);
+		om.setTotalPrice(prices[1]);
 		//çŽ°åœ¨çš„çŠ¶æ€�ï¼šomä¸­åŒ…å�«æœ‰odms ,odmsä¸­çš„odmåŒ…å�«om
 		//å½“ä½¿ç”¨çº§è�”æ·»åŠ æ—¶ï¼Œä¿�å­˜çš„æ˜¯omï¼ŒåŸºäºŽå…³è�”å…³ç³»ï¼Œä¼šçº§è�”åˆ°odmsä¸­çš„æ‰€æœ‰å¯¹è±¡
-		//è°�ç»™orderDetailè¡¨ä¸­çš„orderUuidèµ‹å€¼çš„  update?insert?
-		//æ­¤å¤„è®¾ç½®äº†cascade=save-updateé‚£ä¹ˆï¼Œä¿�å­˜omå°†ä¿�å­˜å…¶ä¸­odmsä¸­çš„odm
-		//inverse=trueåˆ™æ–­å¼€äº†omç»´æŠ¤odmä¸­çš„å…³è�”å…³ç³»çš„å�¯èƒ½æ€§updateå°†ä¸�æ‰§è¡Œ
 		//ç”±äºŽodmä¸­ç»‘å®šäº†ä¸Žomçš„å…³ç³»ï¼Œå› æ­¤åœ¨æ·»åŠ æ—¶ï¼Œinsertè¯­å�¥ä¸­å°†å‡ºçŽ°orderUuidè¿™ä¸ªå­—æ®µ
 		orderDao.save(om);
 	}
