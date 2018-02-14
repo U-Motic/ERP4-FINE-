@@ -118,13 +118,13 @@ public class OrderEbo implements OrderEbi{
 	
 	}
 	
-	private void funz2(EmpModel em,OrderModel om, Long[] goodsUuids, Integer[] nums,Double[] prices) {
-		String orderNum = System.currentTimeMillis()+""+em.getUuid();
-		om.setOrderNum(MD5Utils.sha256(orderNum));
-		om.setOrderType(OrderModel.ORDER_ORDERTYPE_OF_BUY);
-		om.setType(OrderModel.ORDER_TYPE_OF_BUY_NO_CHECK);
-		om.setCreateTime(System.currentTimeMillis());
-		om.setCreater(em);
+	private void funz2(EmpModel emInt,OrderModel omInt, Long[] goodsUuidsInt, Integer[] numsInt,Double[] pricesInt) {
+		String orderNum = System.currentTimeMillis()+""+emInt.getUuid();
+		omInt.setOrderNum(MD5Utils.sha256(orderNum));
+		omInt.setOrderType(OrderModel.ORDER_ORDERTYPE_OF_BUY);
+		omInt.setType(OrderModel.ORDER_TYPE_OF_BUY_NO_CHECK);
+		omInt.setCreateTime(System.currentTimeMillis());
+		omInt.setCreater(emInt);
 		
 		Integer totalNum = 0;
 		Double totalPrice = 0.0d;
@@ -138,22 +138,22 @@ public class OrderEbo implements OrderEbi{
 	 * this public element is a public element
 	 *
 	 */
-	public void save(EmpModel em,OrderModel om, Long[] goodsUuids, Integer[] nums,Double[] prices) {
-		funz2(em,om,goodsUuids,nums,prices);
+	public void save(EmpModel emInt,OrderModel omInt, Long[] goodsUuidsInt, Integer[] numsInt,Double[] pricesInt) {
+		funz2(emInt,omInt,goodsUuidsInt,numsInt,pricesInt);
 		Set<OrderDetailModel> odms = new HashSet<OrderDetailModel>();
-		for(int i = 0;i<goodsUuids.length;i++){
-		funz(i,odms,goodsUuids,null, null, null, om,i, null, om);
+		for(int i = 0;i<goodsUuidsInt.length;i++){
+		funz(i,odms,goodsUuidsInt,null, null, null, omInt,i, null, omInt);
 		}
 		//è®¾ç½®æ‰€æœ‰çš„è®¢å�•æ˜Žç»†é›†å�ˆ
-		om.setOdms(odms);
+		omInt.setOdms(odms);
 		//è®¾ç½®å•†å“�æ€»æ•°é‡�
-		om.setTotalNum(nums[0]);
+		omInt.setTotalNum(nums[0]);
 		//è®¾ç½®è®¢å�•æ€»ä»·æ ¼
-		om.setTotalPrice(prices[1]);
+		omInt.setTotalPrice(prices[1]);
 		//çŽ°åœ¨çš„çŠ¶æ€�ï¼šomä¸­åŒ…å�«æœ‰odms ,odmsä¸­çš„odmåŒ…å�«om
 		//å½“ä½¿ç”¨çº§è�”æ·»åŠ æ—¶ï¼Œä¿�å­˜çš„æ˜¯omï¼ŒåŸºäºŽå…³è�”å…³ç³»ï¼Œä¼šçº§è�”åˆ°odmsä¸­çš„æ‰€æœ‰å¯¹è±¡
 		//ç”±äºŽodmä¸­ç»‘å®šäº†ä¸Žomçš„å…³ç³»ï¼Œå› æ­¤åœ¨æ·»åŠ æ—¶ï¼Œinsertè¯­å�¥ä¸­å°†å‡ºçŽ°orderUuidè¿™ä¸ªå­—æ®µ
-		orderDao.save(om);
+		orderDao.save(omInt);
 	}
 
 	
