@@ -106,8 +106,6 @@ public class OrderAction extends BaseAction{
 	 * this public element is a public element
 	 *
 	 */
-
-
 	public void setStoreEbi(StoreEbi storeEbi) {
 		this.storeEbi = storeEbi;
 	}
@@ -140,8 +138,6 @@ public class OrderAction extends BaseAction{
 	 * this public element is a public element
 	 *
 	 */
-	
-
 	public void setOrderEbi(OrderEbi orderEbi) {
 		this.orderEbi = orderEbi;
 	}
@@ -196,11 +192,11 @@ public class OrderAction extends BaseAction{
 	    }else supplierList.remove(i);
 	
 
-	List<GoodsTypeModel> gtmList = goodsTypeEbi.getAllUnionBySupplier(supplierList.get(0).getUuid());
-	List<GoodsModel> gmList = goodsEbi.getAllByGtmUuid(gtmList.get(0).getUuid());
+	List<GoodsTypeModel> gtmListint = goodsTypeEbi.getAllUnionBySupplier(supplierList.get(0).getUuid());
+	List<GoodsModel> gmListint = goodsEbi.getAllByGtmUuid(gtmListint.get(0).getUuid());
 	put("supplierList",supplierList);
-	put("gtmList",gtmList);
-	put("gmList",gmList);
+	put("gtmList",gtmListint);
+	put("gmList",gmListint);
 	return "buyInput";
 
 	}
@@ -277,8 +273,8 @@ if(flag ==1){
 
 gmList = goodsEbi.getAllByGtmUuid(gtmList.get(0).getUuid());
 for(int i1 = gmList.size()-1;i1>=0;i1--){
-GoodsModel gm = gmList.get(i1);
-if(uuids.contains(gm.getUuid())){
+GoodsModel gmInt = gmList.get(i1);
+if(uuids.contains(gmInt.getUuid())){
 gmList.remove(i1);
 }
 }
