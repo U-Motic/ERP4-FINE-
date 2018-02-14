@@ -85,6 +85,47 @@ public class MenuAction extends BaseAction{
 		return TO_LIST;
 	}
 
+	private void funz3(StringBuilder jsonStr, List<MenuModel> menuList, String root) {
+		//Ã¦Â Â¹Ã¦ï¿½Â®Ã§â„¢Â»Ã©â„¢â€ Ã¤ÂºÂºÃ¨Å½Â·Ã¥ï¿½â€“Ã¥Â¯Â¹Ã¥Âºâ€�Ã§Å¡â€žÃ¨ï¿½Å“Ã¥ï¿½â€¢Ã©Â¡Â¹
+		menuList = menuEbi.getParentMenuByEmp(getLogin().getUuid());
+		for(MenuModel temp:menuList){
+			jsonStr.append("{\"text\":\"");
+			jsonStr.append(temp.getName());
+			jsonStr.append("\",\"expanded\":false,\"hasChildren\":true,\"classes\":\"folder\",\"id\":\"");
+			jsonStr.append(temp.getUuid().toString());
+			jsonStr.append("\"},");
+		}
+	}
+	
+	private String funz(StringBuilder jsonStr, List<MenuModel> menuList, PrintWriter pw, String root){
+		if(root.equals("source")){
+			funz3(jsonStr,menuList,root);
+		}
+		else{
+			//Ã¦Â Â¹Ã¦ï¿½Â®Ã¤Â¼Â Ã©â‚¬â€™Ã§Å¡â€žÃ¨ï¿½Å“Ã¥ï¿½â€¢Ã©Â¡Â¹Ã§â€ºÂ®Ã§Å¡â€žuuidÃ¥â€™Å’Ã§â„¢Â»Ã©â„¢â€ Ã¤ÂºÂºÃ¤Â¿Â¡Ã¦ï¿½Â¯Ã¨Å½Â·Ã¥ï¿½â€“Ã¥â€¦Â¶Ã¥Â­ï¿½Ã©Â¡Â¹Ã§Å¡â€žÃ¨ï¿½Å“Ã¥ï¿½â€¢Ã©â€ºâ€ Ã¥ï¿½Ë†
+			funz2(jsonStr,menuList,root);
+		}
+		jsonStr.deleteCharAt(jsonStr.length()-1);
+		jsonStr.append("]");
+		pw.write(jsonStr.toString());
+		pw.flush();
+		return null;
+	}
+	
+private void funz2(StringBuilder jsonStr, List<MenuModel> menuList, String root) {
+	Long puuid = new Long(root); 
+	menuList = menuEbi.getMenusByPuuidAndEmp(puuid,getLogin().getUuid());
+	//jsonStr.append("{\"text\":\"bbb\",\"hasChildren\":false,\"classes\":\"file\",\"id\":\"2\"},");
+	for(MenuModel temp:menuList){
+		jsonStr.append("{\"text\":\"");
+		jsonStr.append("<a target='main' href='");
+		jsonStr.append(temp.getUrl());
+		jsonStr.append("'>");
+		jsonStr.append(temp.getName());
+		jsonStr.append("</a>");
+		jsonStr.append("\",\"classes\":\"file\"},");
+		}
+	}
 	//----------------
 	/**
 	 * public field
@@ -100,68 +141,17 @@ public class MenuAction extends BaseAction{
 		//Ã¦Å“â‚¬Ã¥ï¿½Å½Ã¤Â¸â‚¬Ã§ÂºÂ§Ã¨ï¿½Å“Ã¥ï¿½â€¢
 		//{"text":"aaa","classes":"Ã¨â€¡ÂªÃ¥Â®Å¡Ã¤Â¹â€°Ã§Å¡â€žÃ¦Â Â·Ã¥Â¼ï¿½class","id":"Ã¦Å“ÂªÃ§Å¸Â¥Ã§Â¼â€“Ã¥ï¿½Â·","hasChildren":false}
 		//Ã¥ï¿½Â¦Ã¥Ë†â„¢Ã¨Â¿â€�Ã¥â€ºÅ¾Ã¥ï¿½Â¦Ã¤Â¸â‚¬Ã§Â§ï¿½jsonÃ¦â€¢Â°Ã¦ï¿½Â®Ã¦â€¢Â°Ã§Â»â€ž
-		
-		
-		
-		
-		
-		
 		//Ã¦â€“Â¹Ã¦Â¡Ë†Ã¥â€ºâ€ºÃ¯Â¼Å¡Ã¥Å¸ÂºÃ¤ÂºÅ½Ã§â„¢Â»Ã©â„¢â€ Ã§â€�Â¨Ã¦Ë†Â·Ã¨Â¿â€ºÃ¨Â¡Å’Ã¨ï¿½Å“Ã¥ï¿½â€¢Ã¥Å Â Ã¨Â½Â½
-		
 		String root = getRequest().getParameter("root");
-		
 		getResponse().setContentType("text/html;charset=utf-8");
-		
 		PrintWriter pw = getResponse().getWriter();
-		
 		StringBuilder jsonStr = new StringBuilder();
 		jsonStr.append("[");
-		
 		List<MenuModel> menuList = null;
-		
-		if(root.equals("source")){
-			//Ã¦Â Â¹Ã¦ï¿½Â®Ã§â„¢Â»Ã©â„¢â€ Ã¤ÂºÂºÃ¨Å½Â·Ã¥ï¿½â€“Ã¥Â¯Â¹Ã¥Âºâ€�Ã§Å¡â€žÃ¨ï¿½Å“Ã¥ï¿½â€¢Ã©Â¡Â¹
-			menuList = menuEbi.getParentMenuByEmp(getLogin().getUuid());
-			for(MenuModel temp:menuList){
-				jsonStr.append("{\"text\":\"");
-				jsonStr.append(temp.getName());
-				jsonStr.append("\",\"expanded\":false,\"hasChildren\":true,\"classes\":\"folder\",\"id\":\"");
-				jsonStr.append(temp.getUuid().toString());
-				jsonStr.append("\"},");
-			}
-		}else{
-			//Ã¦Â Â¹Ã¦ï¿½Â®Ã¤Â¼Â Ã©â‚¬â€™Ã§Å¡â€žÃ¨ï¿½Å“Ã¥ï¿½â€¢Ã©Â¡Â¹Ã§â€ºÂ®Ã§Å¡â€žuuidÃ¥â€™Å’Ã§â„¢Â»Ã©â„¢â€ Ã¤ÂºÂºÃ¤Â¿Â¡Ã¦ï¿½Â¯Ã¨Å½Â·Ã¥ï¿½â€“Ã¥â€¦Â¶Ã¥Â­ï¿½Ã©Â¡Â¹Ã§Å¡â€žÃ¨ï¿½Å“Ã¥ï¿½â€¢Ã©â€ºâ€ Ã¥ï¿½Ë†
-			Long puuid = new Long(root); 
-			menuList = menuEbi.getMenusByPuuidAndEmp(puuid,getLogin().getUuid());
-			//jsonStr.append("{\"text\":\"bbb\",\"hasChildren\":false,\"classes\":\"file\",\"id\":\"2\"},");
-			for(MenuModel temp:menuList){
-				jsonStr.append("{\"text\":\"");
-				jsonStr.append("<a target='main' href='");
-				jsonStr.append(temp.getUrl());
-				jsonStr.append("'>");
-				jsonStr.append(temp.getName());
-				jsonStr.append("</a>");
-				jsonStr.append("\",\"classes\":\"file\"},");
-			}
-		}
-		
-		jsonStr.deleteCharAt(jsonStr.length()-1);
-		jsonStr.append("]");
-		
-		pw.write(jsonStr.toString());
-		
-		pw.flush();
-		return null;
+		funz(jsonStr,menuList,pw,root);
+		return "";
 	}
 	
 }
 
-		
-		
-		
-		
-		
-		
-		
-		
 		
