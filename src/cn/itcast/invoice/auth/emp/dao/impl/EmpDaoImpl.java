@@ -15,25 +15,24 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  *
  */
 public class EmpDaoImpl extends BaseDaoImpl<EmpModel> implements EmpDao{
+	final String res = "%+eqm.getUserName().trim()+%";
 	public static int two = 2, zero = 0;
 	public static long eightysix = 86400000L;
 	public void addUserName(DetachedCriteria dc,EmpQueryModel eqm) {
 		if(eqm.getUserName()!=null && eqm.getUserName().trim().length()>0){
-            	final String res = "%"+eqm.getUserName().trim()+"%";
+            
             	dc.add(Restrictions.like("userName", res));
         	}
 	}
 	
 	public void addName(DetachedCriteria dc,EmpQueryModel eqm) {
 		if(eqm.getPersonalInformation(0)!=null && eqm.getPersonalInformation(0).trim().length()>0){
-			final String res = "%"+eqm.getPersonalInformation(0).trim()+"%";
 			dc.add(Restrictions.like("name",res ));
 		}
 	}
 	
 	public void addTele(DetachedCriteria dc,EmpQueryModel eqm) {
 		if(eqm.getPersonalInformation(two)!=null && eqm.getPersonalInformation(two).trim().length()>zero){
-			final String res = "%"+eqm.getPersonalInformation(two).trim()+"%";
 			dc.add(Restrictions.like("tele", res));
 		}
 	}
@@ -46,7 +45,6 @@ public class EmpDaoImpl extends BaseDaoImpl<EmpModel> implements EmpDao{
 	
 	public void addEmail(DetachedCriteria dc,EmpQueryModel eqm) {
 		if(eqm.getPersonalInformation(1)!=null && eqm.getPersonalInformation(1).trim().length()>0){
-			final String res = "%"+eqm.getPersonalInformation(1).trim()+"%";
 			dc.add(Restrictions.like("email", res));
 		}
 	}

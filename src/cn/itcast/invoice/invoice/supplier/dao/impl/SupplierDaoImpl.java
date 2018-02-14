@@ -14,7 +14,10 @@ import cn.itcast.invoice.util.base.BaseQueryModel;
  * this class implements SupplierDao and extends BaseDaoImpl<SupplierModel>
  *
  */
+
 public class SupplierDaoImpl extends BaseDaoImpl<SupplierModel> implements SupplierDao{
+	final String rep="%+sqm.getName().trim()+%";
+
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm){
 		SupplierQueryModel sqm = (SupplierQueryModel) qm;
 		
@@ -31,14 +34,12 @@ public class SupplierDaoImpl extends BaseDaoImpl<SupplierModel> implements Suppl
 
 	public void control1(SupplierQueryModel sqm,DetachedCriteria dc) {
 		if(sqm.getName()!=null && sqm.getName().trim().length()>0){
-			final String rep="%"+sqm.getName().trim()+"%";
-			dc.add(Restrictions.like("name", rep));
+				dc.add(Restrictions.like("name", rep));
 		}
 	}
 	
 	public void control2(SupplierQueryModel sqm,DetachedCriteria dc) {
 		if(sqm.getContact()!=null && sqm.getContact().trim().length()>0){
-			final String rep="%"+sqm.getContact().trim()+"%";
 			dc.add(Restrictions.like("contact", rep));
 		}
 		
@@ -46,7 +47,6 @@ public class SupplierDaoImpl extends BaseDaoImpl<SupplierModel> implements Suppl
 	 
 	public void control3(SupplierQueryModel sqm,DetachedCriteria dc) {
 		if(sqm.getTele()!=null && sqm.getTele().trim().length()>0){
-			final String rep="%"+sqm.getTele().trim()+"%";
 			dc.add(Restrictions.like("tele", rep));
 		}
 		

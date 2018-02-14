@@ -24,6 +24,8 @@ public class GoodsDaoImpl extends BaseDaoImpl<GoodsModel> implements GoodsDao{
 	 * @param dc
 	 * @param qm
 	 */
+	final static String res="%+gqm.getName().trim()+%";
+	
 	public static void addGtm(GoodsQueryModel gqm, DetachedCriteria dc){
 		if(gqm.getGtm()!=null && gqm.getGtm().getSm()!=null && gqm.getGtm().getSm().getUuid()!=null && gqm.getGtm().getSm().getUuid()!=-1){
 			
@@ -39,7 +41,6 @@ public class GoodsDaoImpl extends BaseDaoImpl<GoodsModel> implements GoodsDao{
 	 */
 	public static void addName(GoodsQueryModel gqm, DetachedCriteria dc){
 		if(gqm.getName()!=null && gqm.getName().trim().length()>0){
-			final String res="%"+gqm.getName().trim()+"%";
 			dc.add(Restrictions.like("name", res));
 		}
 	}
@@ -51,7 +52,6 @@ public class GoodsDaoImpl extends BaseDaoImpl<GoodsModel> implements GoodsDao{
 	 */
 	public static void addProducer(GoodsQueryModel gqm, DetachedCriteria dc) {
 		if(gqm.getProducer()!=null && gqm.getProducer().trim().length()>0){
-			final String res="%"+gqm.getProducer().trim()+"%";
 			dc.add(Restrictions.like("producer", res));
 		}
 	}
