@@ -390,14 +390,14 @@ return "ajaxGetGtmAndGm";
 		if (check ==1) {
 			List<OrderModel> orderList = orderEbi.getAllTasks(oqm,pageNum,pageCount);
 			put("orderList",orderList);
-			return "assignTaskList";
+			toReturn = "assignTaskList";
 		}
 		else if (check ==2) {
 			Long depUuid = getLogin().getDm().getUuid();
 			List<EmpModel> empList = empEbi.getAllByDep(depUuid);
 			put("empList",empList);
 			om = orderEbi.get(om.getUuid());
-			return "assignTaskDetail";
+			toReturn = "assignTaskDetail";
 		}
 		else {
 			toReturn = "The Value is not correct, please read documentation!";
