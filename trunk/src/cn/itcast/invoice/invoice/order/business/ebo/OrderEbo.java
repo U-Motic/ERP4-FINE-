@@ -21,14 +21,36 @@ import cn.itcast.invoice.util.format.MD5Utils;
  *
  */
 public class OrderEbo implements OrderEbi{
+	
 	private OrderDao orderDao;
+	/**
+	 * this is a public element
+	 */
 	public static final Set<Integer> taskTypesSet;
 
 	/**
 	 * this public element is a public element
 	 *
 	 */
+	/**
+	 * this public element is a public element
+	 *
+	 */
+	public static Integer[] taskTypes2 = {
+			OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS,
+			//ç¼ºå°‘3ç§�
+			//å…±è®¡4ç§�çŠ¶æ€�
+			};
 	
+	/**
+	 * this public element is a public element
+	 *
+	 */
+	static{
+		taskTypesSet = new HashSet<Integer>();
+		taskTypesSet.add(OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS);
+		
+	}
 	private final Integer[] inTypes = {
 			OrderModel.ORDER_TYPE_OF_BUY_IN_STORE,
 			//ç¼ºå°‘1ç§�
@@ -268,25 +290,7 @@ public class OrderEbo implements OrderEbi{
 		return orderDao.getAllByTypes(oqm, pageNum, pageCount, taskTypes);
 	}
 	
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public static Integer[] taskTypes2 = {
-			OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS,
-			//ç¼ºå°‘3ç§�
-			//å…±è®¡4ç§�çŠ¶æ€�
-			};
-	
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	static{
-		taskTypesSet = new HashSet<Integer>();
-		taskTypesSet.add(OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS);
-		
-	}
+
 	
 	/**
 	 * this public element is a public element

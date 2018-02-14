@@ -19,6 +19,7 @@ import cn.itcast.invoice.util.format.FormatUtil;
  */
 public class BillAction extends BaseAction{
 	private String xlsName;
+	private List<OrderDetailModel> odmList;
 	private InputStream downloadExcel;
 	/**
 	 * this public element is a public element
@@ -60,7 +61,6 @@ public class BillAction extends BaseAction{
 		put("supplierList",supplierList);
 		return "buyBill";
 	}
-	private List<OrderDetailModel> odmList;
 	/**
 	 * this public element is a public element
 	 *
