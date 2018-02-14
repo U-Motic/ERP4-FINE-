@@ -160,7 +160,7 @@ public class GeneratorUtil {
 		funz4(bw);
 	}
 	
-	public void funz5(BufferedWriter bw) throws IOException {
+	private void funz5(BufferedWriter bw) throws IOException {
 
 		bw.newLine();
 		bw.write(qwe3);
