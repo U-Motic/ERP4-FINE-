@@ -13,6 +13,7 @@ public class ExceptionInterceptor extends AbstractInterceptor{
 	
 	/**
 	 * this method returns the string for the invocation
+	 * @throws Exception
 	 */
 	public String intercept(ActionInvocation invocation) throws Exception {
 		String toReturn = null;

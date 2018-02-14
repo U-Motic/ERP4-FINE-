@@ -13,6 +13,7 @@ public class LoginInterceptor extends AbstractInterceptor {
 	
 	/**
 	 * this method returns the invocation string
+	 *  @throws Exception
 	 */
 	public String intercept(ActionInvocation invocation) throws Exception {
 		String toReturn;
