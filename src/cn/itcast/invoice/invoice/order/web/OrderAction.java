@@ -104,14 +104,8 @@ public class OrderAction extends BaseAction{
 	 * this public element is a public element
 	 *
 	 */
-	public void setOrderDetailEbi(OrderDetailEbi orderDetailEbi) {
-		this.orderDetailEbi = orderDetailEbi;
-	}
 
-	/**
-	 * this public element is a public element
-	 *
-	 */
+
 	public void setStoreEbi(StoreEbi storeEbi) {
 		this.storeEbi = storeEbi;
 	}
@@ -144,14 +138,8 @@ public class OrderAction extends BaseAction{
 	 * this public element is a public element
 	 *
 	 */
-	public void setSupplierEbi(SupplierEbi supplierEbi) {
-		this.supplierEbi = supplierEbi;
-	}
+	
 
-	/**
-	 * this public element is a public element
-	 *
-	 */
 	public void setOrderEbi(OrderEbi orderEbi) {
 		this.orderEbi = orderEbi;
 	}
@@ -249,20 +237,8 @@ public class OrderAction extends BaseAction{
 	public GoodsModel getGm() {
 		return gm;
 	}
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public List<GoodsTypeModel> getGtmList() {
-		return gtmList;
-	}
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public List<GoodsModel> getGmList() {
-		return gmList;
-	}
+
+	
 
 	/**
 	 * this public element is a public element
@@ -411,71 +387,5 @@ return "ajaxGetGtmAndGm";
 		}
 		return toReturn;
 	}
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	
-	public String queryTask(){
-		List<OrderModel> orderList = orderEbi.getAllByCompleter(oqm,pageNum,pageCount,getLogin());
-		put("orderList",orderList);
-		return "queryTask";
-	}
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	
-	public String toTaskDetail(){
-		om = orderEbi.get(om.getUuid());
-		return "toTaskDetail";
-	}
-	
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public String completeTask(){
-		orderEbi.endTask(om.getUuid());
-		return "toQueryTask";
-	}
-	
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public String inGoodsList(){
-		List<OrderModel> orderList = orderEbi.getAllNotIn(oqm,pageNum,pageCount);
-		put("orderList",orderList);
-		return "inGoodsList";
-	}
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public String inGoodsDetail(){
-		List<StoreModel> storeList = storeEbi.getAll();
-		put("storeList",storeList);
-		om = orderEbi.get(om.getUuid());
-		return "inGoodsDetail";
-	}
-	
-	
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public OrderDetailModel getOdm() {
-		return odm;
-	}
 
-	/**
-	 * this public element is a public element
-	 *
-	 */
-	public String ajaxGetSurplusByOdmUuid(){
-		//Ã¦Â Â¹Ã¦�dgjhdfgj�¿½Â®odmUuidÃ¨Å½Â·Ã¥ï¿½â€“Ã¥Â¯Â¹Ã¥Âºâ€�Ã§Å¡â€žÃ¨Â´Â§Ã§â€°Â©Ã¥â€°Â©Ã¤Â½â„¢Ã¦â€¢Â°Ã©â€¡ï¿½
-		odm = orderDetailEbi.get(odmUuid);
-		return "ajaxGetSurplusByOdmUuid";
-	}
 }
