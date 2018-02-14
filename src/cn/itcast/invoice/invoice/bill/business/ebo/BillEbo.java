@@ -105,9 +105,9 @@ public class BillEbo implements BillEbi{
 	public void getBillForPie(OutputStream os, List<Object[]> billList) {
 		//ÃƒÂ¥Ã¢â‚¬Â¡Ã¢â‚¬Â ÃƒÂ¥Ã‚Â¤Ã¢â‚¬Â¡ÃƒÂ¦Ã¢â‚¬Â¢Ã‚Â°ÃƒÂ¦Ã¯Â¿Â½Ã‚Â®
 		DefaultPieDataset localDefaultPieDataset = new DefaultPieDataset();
-		for(Object[] objs:billList){
-			GoodsModel gm = (GoodsModel) objs[0];
-			Long num = (Long) objs[1];
+		for(Object[] thing:billList){
+			GoodsModel gm = (GoodsModel) thing[0];
+			Long num = (Long) thing[1];
 			localDefaultPieDataset.setValue(gm.getName(), new Double(num));
 		}
 		//ÃƒÂ¦Ã¢â‚¬Â¢Ã‚Â°ÃƒÂ¦Ã¯Â¿Â½Ã‚Â®ÃƒÂ¨Ã‚Â½Ã‚Â¬ÃƒÂ¥Ã…â€™Ã¢â‚¬â€œÃƒÂ¤Ã‚Â¸Ã‚ÂºjfreechartÃƒÂ¥Ã‚Â¯Ã‚Â¹ÃƒÂ¨Ã‚Â±Ã‚Â¡

@@ -238,8 +238,8 @@ public class GeneratorUtil {
 		funz1(bw);
 		}
 		catch (java.io.FileNotFoundException e1) {
-			final String exc=file;
-            System.out.println(exc);
+			final String excInt=file;
+            System.out.println(excInt);
           } 
 		 finally {
 	           if (bw != null) {
