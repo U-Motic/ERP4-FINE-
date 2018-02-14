@@ -107,14 +107,14 @@ public class GeneratorUtil {
 		fun1(bw);
 		}
 		catch (java.io.FileNotFoundException e1) {
-           
+           System.out.println("Something was wrong!");
           } 
 		 finally {
 	           if (bw != null) {
 	             try {
 	               bw.close(); // OK
 	             } catch (java.io.IOException e3) {
-	               
+	               System.out.println("Something Wrong!");
 	             }
 	           }
 	         }
