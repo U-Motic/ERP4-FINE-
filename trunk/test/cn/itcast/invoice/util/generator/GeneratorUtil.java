@@ -76,7 +76,11 @@ public class GeneratorUtil {
 		fun3(bw);
 	}
 	
-	
+	/**
+	 * 
+	 * @param bw
+	 * @throws IOException
+	 */
 	private void fun1(BufferedWriter bw) throws IOException {
 		bw.write(qwe2);
 		bw.newLine();
@@ -93,6 +97,11 @@ public class GeneratorUtil {
 	}
 	
 	//8.Ã§â€�Å¸Ã¦Ë†ï¿½applicationContext.xml
+	/**
+	 * 
+	 * @param bw
+	 * @throws Exception
+	 */
 	private void generatorApplicationContextXml() throws Exception{
 		//1.Ã¥Ë†â€ºÃ¥Â»ÂºÃ¦â€“â€¡Ã¤Â»Â¶
 		File f = null;
@@ -126,7 +135,11 @@ public class GeneratorUtil {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @param bw
+	 * @throws IOException
+	 */
 	private void funz1(BufferedWriter bw) throws IOException {
 		bw.newLine();
 		bw.newLine();
@@ -142,7 +155,11 @@ public class GeneratorUtil {
 		bw.newLine();
 		funz3(bw);
 	}
-	
+	/**
+	 * 
+	 * @param bw
+	 * @throws IOException
+	 */
 	private void funz3(BufferedWriter bw) throws IOException {
 		bw.newLine();
 		bw.write("");
@@ -159,7 +176,11 @@ public class GeneratorUtil {
 		bw.newLine();
 		funz4(bw);
 	}
-	
+	/**
+	 * 
+	 * @param bw
+	 * @throws IOException
+	 */
 	private void funz5(BufferedWriter bw) throws IOException {
 
 		bw.newLine();
@@ -170,7 +191,11 @@ public class GeneratorUtil {
 		bw.newLine();
 		funz6(bw);
 	}
-	
+	/**
+	 * 
+	 * @param bw
+	 * @throws IOException
+	 */
 	private void funz4(BufferedWriter bw) throws IOException{
 		bw.write(per);
 		bw.newLine();
@@ -182,8 +207,12 @@ public class GeneratorUtil {
 		bw.newLine();	
 		funz5(bw);
 	}
-	
-	public void funz8(BufferedWriter bw) throws IOException {
+	/**
+	 * 
+	 * @param bw
+	 * @throws IOException
+	 */
+	private void funz8(BufferedWriter bw) throws IOException {
 		bw.write(qwe1);
 		bw.newLine();
 		bw.newLine();
@@ -197,8 +226,12 @@ public class GeneratorUtil {
 		bw.newLine();
 		funz7(bw);
 	}
-	
-	public void funz7(BufferedWriter bw) throws IOException {
+	/**
+	 * 
+	 * @param bw
+	 * @throws IOException
+	 */
+	private  void funz7(BufferedWriter bw) throws IOException {
 		bw.write(qwe1);
 		bw.newLine();
 		bw.write(qwe1);
@@ -208,8 +241,12 @@ public class GeneratorUtil {
 		bw.newLine();
 		
 	}
-	
-	public void funz6(BufferedWriter bw) throws IOException {
+	/**
+	 * 
+	 * @param bw
+	 * @throws IOException
+	 */
+	private void funz6(BufferedWriter bw) throws IOException {
 		bw.newLine();
 		bw.newLine();
 		bw.newLine();
@@ -288,7 +325,7 @@ public class GeneratorUtil {
 		funzi4(bw);
 	}
 	
-	public void funzi5(BufferedWriter bw) throws IOException {
+	private void funzi5(BufferedWriter bw) throws IOException {
 		bw.newLine();
 		bw.write(qwe1);
 		bw.newLine();
@@ -314,7 +351,7 @@ public class GeneratorUtil {
 		funzi5(bw);
 	}
 	
-	public void funzi8(BufferedWriter bw) throws IOException {
+	private void funzi8(BufferedWriter bw) throws IOException {
 		bw.write("	}");
 		bw.newLine();
 		bw.write(qwe1);
@@ -326,7 +363,7 @@ public class GeneratorUtil {
 		funzi7(bw);
 	}
 	
-	public void funzi7(BufferedWriter bw) throws IOException {
+	private void funzi7(BufferedWriter bw) throws IOException {
 		bw.newLine();
 		bw.write(qwe1);
 		bw.newLine();
@@ -334,7 +371,7 @@ public class GeneratorUtil {
 		funzi8(bw);
 	}
 	
-	public void funzi6(BufferedWriter bw) throws IOException {
+	private void funzi6(BufferedWriter bw) throws IOException {
 		bw.newLine();
 		bw.newLine();
 		bw.newLine();
@@ -406,7 +443,7 @@ public class GeneratorUtil {
 		
 	}
 	
-	public void funzio5(BufferedWriter bw) throws IOException {
+	private void funzio5(BufferedWriter bw) throws IOException {
 		bw.newLine();
 		bw.newLine();
 		bw.write(qwe2);
@@ -422,7 +459,7 @@ public class GeneratorUtil {
 	
 	
 	
-	public void funzio8(BufferedWriter bw) throws IOException {
+	private void funzio8(BufferedWriter bw) throws IOException {
 		bw.newLine();
 		bw.newLine();
 		bw.write(qwe4);
@@ -436,7 +473,7 @@ public class GeneratorUtil {
 		funzio7(bw);
 	}
 	
-	public void funzio7(BufferedWriter bw) throws IOException {
+	private void funzio7(BufferedWriter bw) throws IOException {
 		bw.write("		}");
 		bw.newLine();
 		bw.newLine();
@@ -448,7 +485,7 @@ public class GeneratorUtil {
 		funzio8(bw);
 	}
 	
-	public void funzio6(BufferedWriter bw) throws IOException {
+	private void funzio6(BufferedWriter bw) throws IOException {
 		bw.newLine();
 		bw.newLine();
 		bw.write(qwe5);
