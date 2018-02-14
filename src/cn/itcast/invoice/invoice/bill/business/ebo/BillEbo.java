@@ -2,7 +2,6 @@ package cn.itcast.invoice.invoice.bill.business.ebo;
 
 import java.awt.Font;
 import java.awt.RenderingHints;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;

@@ -10,7 +10,6 @@ import cn.itcast.invoice.invoice.store.business.ebi.StoreEbi;
 import cn.itcast.invoice.invoice.store.vo.StoreModel;
 import cn.itcast.invoice.invoice.store.vo.StoreQueryModel;
 import cn.itcast.invoice.util.base.BaseAction;
-import cn.itcast.invoice.util.exception.AppException;
 /**
  * this class extends BaseAction
  *
